@@ -318,6 +318,16 @@ body {
     flex-shrink: 0;
 }
 
+.company-logo-img {
+    width: 48px;
+    height: 48px;
+    border-radius: 4px;
+    object-fit: contain;
+    background: white;
+    border: 1px solid var(--border);
+    flex-shrink: 0;
+}
+
 .company-logo.edu {
     background: linear-gradient(135deg, var(--blue) 0%, #7c3aed 100%);
     color: white;
