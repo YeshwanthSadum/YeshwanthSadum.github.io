@@ -44,15 +44,31 @@ body {
 }
 
 .nav-logo {
-    font-size: 1.25rem;
-    font-weight: 500;
-    color: var(--text);
+    display: flex;
+    align-items: center;
+    gap: 0.625rem;
     text-decoration: none;
 }
 
-.logo-y {
-    color: var(--blue);
+.logo-mark {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    background: linear-gradient(135deg, var(--blue) 0%, #1557b0 100%);
+    color: white;
+    font-size: 0.875rem;
     font-weight: 700;
+    border-radius: 8px;
+    letter-spacing: -0.5px;
+}
+
+.logo-text {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--text);
+    letter-spacing: -0.25px;
 }
 
 .nav-menu {
