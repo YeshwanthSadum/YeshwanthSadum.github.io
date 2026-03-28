@@ -5,346 +5,278 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>S Yeshwanth | Senior Engineer - Gen AI | Bosch</title>
     <link rel="stylesheet" href="styles.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Google+Sans:wght@400;500;700&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
 </head>
 <body>
     <nav class="navbar">
         <div class="nav-container">
-            <a href="#" class="nav-logo">SY</a>
+            <a href="#" class="nav-logo">
+                <span class="logo-y">Y</span>eshwanth
+            </a>
             <ul class="nav-menu">
                 <li><a href="#about">About</a></li>
                 <li><a href="#experience">Experience</a></li>
-                <li><a href="#projects">Projects</a></li>
                 <li><a href="#insights">Insights</a></li>
-                <li><a href="#skills">Skills</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
         </div>
     </nav>
 
-    <header class="hero">
-        <div class="hero-content">
-            <img src="profile.jpg" alt="S Yeshwanth" class="profile-photo">
-            <h1>S Yeshwanth</h1>
-            <p class="tagline">Senior Engineer - Gen AI | Bosch Global Software Technologies</p>
-            <p class="intro">Specializing in Generative AI, NLP, and LLM Observability. Building impactful, data-driven solutions with cutting-edge AI methodologies.</p>
-            <div class="hero-buttons">
-                <a href="#contact" class="btn btn-primary">Get in Touch</a>
-                <a href="https://www.linkedin.com/in/sadum-yeshwanth" target="_blank" class="btn btn-secondary">LinkedIn</a>
+    <main class="main-content">
+        <!-- Left Column: Profile & Info -->
+        <aside class="sidebar">
+            <div class="profile-card">
+                <img src="profile.jpg" alt="S Yeshwanth" class="profile-photo">
+                <h1>S Yeshwanth</h1>
+                <p class="title">Senior Engineer - Gen AI</p>
+                <p class="company">Bosch Global Software Technologies</p>
+                <p class="location">Bengaluru, India</p>
+                <div class="social-links">
+                    <a href="https://www.linkedin.com/in/sadum-yeshwanth" target="_blank" class="social-btn linkedin">LinkedIn</a>
+                    <a href="mailto:sadumyeshwanth@gmail.com" class="social-btn email">Email</a>
+                </div>
             </div>
-        </div>
-    </header>
 
-    <section id="about" class="section">
-        <div class="container">
-            <h2>About Me</h2>
-            <p>As a Senior Engineer at Bosch Global Software Technologies, I specialize in data science, Natural Language Processing (NLP), and Large Language Model (LLM) observability. I am focused on innovation and building impactful, data-driven solutions. Driven by a strong academic background in AI and Machine Learning, I am passionate about integrating cutting-edge AI methodologies into real-world applications to solve complex challenges.</p>
-            <div class="education">
-                <h3>Education</h3>
+            <div class="card" id="about">
+                <h2>About</h2>
+                <p>Specializing in <strong>Generative AI</strong>, <strong>LLM Observability</strong>, and <strong>Context Engineering</strong>. I build production-grade AI systems with a focus on evaluation frameworks, multi-agent architectures, and debugging complex AI workflows.</p>
+                <p>Passionate about treating AI as <strong>Software 3.0</strong> — bringing engineering discipline to agent development through structured evaluation, observability, and continuous improvement.</p>
+            </div>
+
+            <div class="card">
+                <h2>Core Expertise</h2>
+                <div class="chips">
+                    <span class="chip blue">LLM Observability</span>
+                    <span class="chip red">AI Evals</span>
+                    <span class="chip yellow">Context Engineering</span>
+                    <span class="chip green">Multi-agent Systems</span>
+                    <span class="chip blue">RAG Systems</span>
+                    <span class="chip red">Anomaly Detection</span>
+                    <span class="chip yellow">Time Series</span>
+                    <span class="chip green">NLP</span>
+                </div>
+            </div>
+
+            <div class="card">
+                <h2>Tools & Technologies</h2>
+                <div class="chips">
+                    <span class="chip-outline">Python</span>
+                    <span class="chip-outline">LangChain</span>
+                    <span class="chip-outline">LangSmith</span>
+                    <span class="chip-outline">Langfuse</span>
+                    <span class="chip-outline">LlamaIndex</span>
+                    <span class="chip-outline">TensorFlow</span>
+                    <span class="chip-outline">ClickHouse</span>
+                    <span class="chip-outline">Docker</span>
+                </div>
+            </div>
+
+            <div class="card">
+                <h2>Education</h2>
                 <div class="edu-item">
-                    <h4>Master of Engineering - AI & Machine Learning</h4>
-                    <p>Manipal Academy of Higher Education | Oct 2021 - May 2023 | CGPA: 9.51</p>
+                    <strong>M.Eng - AI & Machine Learning</strong>
+                    <p>Manipal Academy of Higher Education</p>
+                    <span class="meta">2021-2023 | CGPA: 9.51</span>
                 </div>
                 <div class="edu-item">
-                    <h4>Bachelor of Engineering - Electronics & Communication</h4>
-                    <p>PES University, Bengaluru | 2016 - 2020 | CGPA: 8.24</p>
+                    <strong>B.E - Electronics & Communication</strong>
+                    <p>PES University, Bengaluru</p>
+                    <span class="meta">2016-2020 | CGPA: 8.24</span>
                 </div>
             </div>
-        </div>
-    </section>
 
-    <section id="experience" class="section section-alt">
-        <div class="container">
-            <h2>Experience</h2>
-
-            <div class="exp-item current">
-                <div class="exp-header">
-                    <h3>Senior Engineer - Gen AI</h3>
-                    <span class="company">Bosch Global Software Technologies</span>
-                    <span class="duration">Jun 2025 - Present | Bengaluru, India</span>
-                </div>
-                <ul>
-                    <li>Working on Generative AI and Natural Language Processing solutions</li>
-                    <li>Building enterprise-grade LLM applications and observability systems</li>
+            <div class="card">
+                <h2>Certifications</h2>
+                <ul class="cert-list">
+                    <li>Deep Agents - LangChain Academy</li>
+                    <li>Azure Fundamentals AZ-900 - Microsoft</li>
+                    <li>Docker for Beginners - Coursera</li>
+                    <li>IELTS - Score: 7.5</li>
                 </ul>
             </div>
+        </aside>
 
-            <div class="exp-item">
-                <div class="exp-header">
-                    <h3>Data Scientist</h3>
-                    <span class="company">VuNet Systems</span>
-                    <span class="duration">May 2024 - Jun 2025</span>
-                </div>
-                <ul>
-                    <li>Built complex RAG systems with evaluation frameworks for LLM applications</li>
-                    <li>Developed time series analysis solutions and anomaly detection models</li>
-                    <li>Created backend for ClickHouse table management and automated data archival</li>
-                </ul>
-            </div>
+        <!-- Right Column: Experience & Insights -->
+        <section class="content">
+            <div class="card" id="experience">
+                <h2>Experience</h2>
 
-            <div class="exp-item">
-                <div class="exp-header">
-                    <h3>Data Science Engineer</h3>
-                    <span class="company">VuNet Systems</span>
-                    <span class="duration">Jun 2023 - May 2024</span>
-                </div>
-                <ul>
-                    <li>Built a suite of anomaly detection techniques scaling to hundreds of real-time signals</li>
-                    <li>Developed data extraction module for ML applications with MinIO integration</li>
-                </ul>
-            </div>
-
-            <div class="exp-item">
-                <div class="exp-header">
-                    <h3>Machine Learning Intern</h3>
-                    <span class="company">VuNet Systems</span>
-                    <span class="duration">Aug 2022 - May 2023</span>
-                </div>
-                <ul>
-                    <li>Focused on Anomaly Detection and Time Series Analysis</li>
-                    <li>Built foundational ML pipelines for production systems</li>
-                </ul>
-            </div>
-
-            <div class="exp-item">
-                <div class="exp-header">
-                    <h3>Teaching (Part-time)</h3>
-                    <span class="company">Manipal School of Information Science</span>
-                    <span class="duration">Jan 2024 - Apr 2024</span>
-                </div>
-                <ul>
-                    <li>Instructed Reinforcement Learning theory and lab sessions for ME students</li>
-                    <li>Covered Markov Decision Process, Dynamic Programming, and Monte Carlo methods</li>
-                </ul>
-            </div>
-
-            <div class="exp-item">
-                <div class="exp-header">
-                    <h3>Associate - Cloud Infrastructure</h3>
-                    <span class="company">Accenture</span>
-                    <span class="duration">Nov 2020 - Oct 2021 | Bangalore</span>
-                </div>
-                <ul>
-                    <li>Troubleshooting and problem solving in O365 Admin Center</li>
-                    <li>Experience with Exchange, Teams and SharePoint Admin Center</li>
-                </ul>
-            </div>
-
-            <div class="exp-item">
-                <div class="exp-header">
-                    <h3>Intern</h3>
-                    <span class="company">Pinwheel Robotics</span>
-                    <span class="duration">Jan 2020 - Feb 2020</span>
-                </div>
-                <ul>
-                    <li>Gained hands-on experience in robotics and embedded systems</li>
-                </ul>
-            </div>
-        </div>
-    </section>
-
-    <section id="projects" class="section">
-        <div class="container">
-            <h2>Projects</h2>
-
-            <div class="project-grid">
-                <div class="project-card">
-                    <h3>Real-time Anomaly Detection</h3>
-                    <p>Built a suite of anomaly detection models selected in real-time based on signal type. Uses time-series classification for model selection with filtering techniques to reduce false positives. Capable of capturing trend, seasonality, handling demand drops, and changepoints while scaling to hundreds of signals.</p>
-                    <div class="tech-tags">
-                        <span>Python</span>
-                        <span>Time Series</span>
-                        <span>ML</span>
+                <div class="exp-item current">
+                    <div class="exp-dot"></div>
+                    <div class="exp-content">
+                        <h3>Senior Engineer - Gen AI</h3>
+                        <p class="company">Bosch Global Software Technologies</p>
+                        <span class="duration">Jun 2025 - Present</span>
+                        <p>Building enterprise Generative AI and NLP solutions. Focus on LLM observability and production AI systems.</p>
                     </div>
                 </div>
 
-                <div class="project-card">
-                    <h3>LLM Dashboard Generator</h3>
-                    <p>Developed a chat-based data analytics tool using LLMs and Streamlit UI to perform data summarization and generate dynamic dashboards from text inputs. Features a router for intent classification, automatic Streamlit code generation, and a ReAct agent for data queries.</p>
-                    <div class="tech-tags">
-                        <span>OpenAI</span>
-                        <span>LlamaIndex</span>
-                        <span>Streamlit</span>
-                        <span>ReAct Agent</span>
+                <div class="exp-item">
+                    <div class="exp-dot"></div>
+                    <div class="exp-content">
+                        <h3>Data Scientist</h3>
+                        <p class="company">VuNet Systems</p>
+                        <span class="duration">May 2024 - Jun 2025</span>
+                        <p>Built complex RAG systems with evaluation frameworks. Developed LLM applications and time series analysis solutions.</p>
                     </div>
-                    <a href="https://www.linkedin.com/posts/sadum-yeshwanth_create-dynamic-dashboards-using-llms-activity-7193674701397807104-iN-I" target="_blank" class="project-link">View Project</a>
                 </div>
 
-                <div class="project-card">
-                    <h3>Deep Agents Research Project</h3>
-                    <p>Built a research agent leveraging context engineering techniques and thinking tools. Focused on observability challenges for long-running agents (50+ steps), capturing generations, tool calls, and thinking steps using LangSmith.</p>
-                    <div class="tech-tags">
-                        <span>LangChain</span>
-                        <span>Multi-agent</span>
-                        <span>LangSmith</span>
+                <div class="exp-item">
+                    <div class="exp-dot"></div>
+                    <div class="exp-content">
+                        <h3>Data Science Engineer</h3>
+                        <p class="company">VuNet Systems</p>
+                        <span class="duration">Jun 2023 - May 2024</span>
+                        <p>Built anomaly detection suite scaling to hundreds of real-time signals. Data extraction module with MinIO integration.</p>
+                    </div>
+                </div>
+
+                <div class="exp-item">
+                    <div class="exp-dot"></div>
+                    <div class="exp-content">
+                        <h3>ML Intern</h3>
+                        <p class="company">VuNet Systems</p>
+                        <span class="duration">Aug 2022 - May 2023</span>
+                        <p>Anomaly detection and time series analysis foundations.</p>
+                    </div>
+                </div>
+
+                <div class="exp-item">
+                    <div class="exp-dot"></div>
+                    <div class="exp-content">
+                        <h3>Teaching - Reinforcement Learning</h3>
+                        <p class="company">Manipal School of Information Science</p>
+                        <span class="duration">Jan 2024 - Apr 2024</span>
+                        <p>Instructed RL theory and labs: MDP, Dynamic Programming, Monte Carlo methods.</p>
+                    </div>
+                </div>
+
+                <div class="exp-item">
+                    <div class="exp-dot"></div>
+                    <div class="exp-content">
+                        <h3>Cloud Infrastructure Associate</h3>
+                        <p class="company">Accenture</p>
+                        <span class="duration">Nov 2020 - Oct 2021</span>
+                        <p>O365 Admin Center, Exchange, Teams, SharePoint administration.</p>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
 
-    <section id="insights" class="section section-alt">
-        <div class="container">
-            <h2>Insights & Writing</h2>
-            <p class="section-intro">Thoughts on AI engineering, LLM observability, and building production AI systems.</p>
+            <div class="card" id="insights">
+                <h2>Insights & Writing</h2>
+                <p class="section-desc">Thoughts on AI engineering, LLM observability, and building production AI systems.</p>
 
-            <div class="insights-grid">
-                <div class="insight-card">
-                    <span class="insight-tag">LLM Ops</span>
-                    <h3>Anthropic's Skill Creator</h3>
-                    <p>The new Skill Creator introduces engineering discipline to agent development: test, measure, refine. Features evals for agent skills, regression detection, multi-agent parallel testing, and A/B comparison.</p>
+                <div class="insights-list">
+                    <article class="insight">
+                        <span class="tag blue">LLM Ops</span>
+                        <h3>Anthropic's Skill Creator</h3>
+                        <p>The new Skill Creator introduces engineering discipline to agent development: test, measure, refine. Features evals for agent skills, regression detection, multi-agent parallel testing, A/B comparison, and better skill triggering. Structured evaluation and observability are crucial for production AI systems.</p>
+                        <span class="date">3 weeks ago</span>
+                    </article>
+
+                    <article class="insight">
+                        <span class="tag green">Observability</span>
+                        <h3>True LLM Observability</h3>
+                        <p>Debugging black-box AI agents requires Metrics, Traces, Logs, and Evals. 4-step process: (1) Metrics - spot token spikes, (2) Traces - visualize execution chains, (3) Logs - drill into details, (4) The Fix - add failure scenarios to Evals. Tools: LangSmith, Langfuse, Arize Phoenix, Helicone.</p>
+                        <span class="date">3 weeks ago</span>
+                    </article>
+
+                    <article class="insight">
+                        <span class="tag red">AI Evals</span>
+                        <h3>Avoiding the Tools Trap</h3>
+                        <p>Generic vanity metrics waste time. Custom evaluations mapped to user pain points matter. Granular error analysis through manual trace review is the highest-leverage activity. Domain experts should judge output quality. AI must be treated as Software 3.0.</p>
+                        <span class="date">1 month ago</span>
+                    </article>
+
+                    <article class="insight">
+                        <span class="tag yellow">Agents</span>
+                        <h3>Deep Agents & LangChain Academy</h3>
+                        <p>Built a research agent leveraging context engineering techniques and thinking tools. For long-running agents (50+ steps), observability is the real challenge. LangSmith excels at capturing generations, tool calls, and thinking steps.</p>
+                        <span class="date">2 months ago</span>
+                    </article>
+
+                    <article class="insight">
+                        <span class="tag blue">Tools</span>
+                        <h3>Claude Code + Remotion</h3>
+                        <p>AI agents can now generate professional videos and complex animations programmatically from simple English prompts. Claude Code and Remotion enable effortless video production using React.</p>
+                        <span class="date">2 months ago</span>
+                    </article>
+
+                    <article class="insight">
+                        <span class="tag green">Context Engineering</span>
+                        <h3>Cursor's Dynamic Context Discovery</h3>
+                        <p>How Cursor found success: writing long outputs as files, smarter memory through chat history files, efficient tool storage, automatic terminal access logs, and skills on demand to save context windows.</p>
+                        <span class="date">2 months ago</span>
+                    </article>
+
+                    <article class="insight">
+                        <span class="tag red">Evals</span>
+                        <h3>Error Analysis & LLMs-as-Judges</h3>
+                        <p>"LLMs are powerful accelerators for parts of the evals workflow... but they cannot replace your judgment in that initial discovery phase." LLMs lack unique business context for specific error catching.</p>
+                        <span class="date">2 months ago</span>
+                    </article>
+
+                    <article class="insight">
+                        <span class="tag yellow">Architecture</span>
+                        <h3>Google ADK's Context Architecture</h3>
+                        <p>Context management can no longer mean simple string manipulation. Google ADK features tiered storage, compiled views, pipeline processing, and strict scoping for multi-agent handoffs to scale agents reliably.</p>
+                        <span class="date">2 months ago</span>
+                    </article>
+
+                    <article class="insight">
+                        <span class="tag blue">CI/CD</span>
+                        <h3>Continuous Improvement Flywheel</h3>
+                        <p>CI for LLMs, Continuous Delivery with observability, and running automated evaluators in production. The flywheel approach to AI evals ensures continuous improvement.</p>
+                        <span class="date">3 months ago</span>
+                    </article>
+
+                    <article class="insight">
+                        <span class="tag green">Team</span>
+                        <h3>BGSW & MiDAS Recognition</h3>
+                        <p>Grateful to BGSW and the MiDAS team for their recognition. Looking forward to achieving new heights together.</p>
+                        <span class="date">3 months ago</span>
+                    </article>
                 </div>
 
-                <div class="insight-card">
-                    <span class="insight-tag">Observability</span>
-                    <h3>True LLM Observability</h3>
-                    <p>Debugging black-box AI agents requires bringing together Metrics, Traces, Logs, and Evals. A 4-step process: spot metric spikes, visualize execution chains, drill into logs, and add failure scenarios to Evals.</p>
-                </div>
-
-                <div class="insight-card">
-                    <span class="insight-tag">AI Evals</span>
-                    <h3>Avoiding the Tools Trap</h3>
-                    <p>Generic vanity metrics waste time. Custom evaluations mapped to user pain points matter. Granular error analysis through manual trace review is the highest-leverage activity. AI must be treated as Software 3.0.</p>
-                </div>
-
-                <div class="insight-card">
-                    <span class="insight-tag">Agents</span>
-                    <h3>Deep Agents & Observability</h3>
-                    <p>Built a research agent leveraging context engineering techniques and thinking tools. For long-running agents (50+ steps), observability is the real challenge - capturing generations, tool calls, and thinking steps.</p>
-                </div>
-
-                <div class="insight-card">
-                    <span class="insight-tag">Context Engineering</span>
-                    <h3>Cursor's Dynamic Context Discovery</h3>
-                    <p>How Cursor found success: writing long outputs as files, smarter memory through chat history files, efficient tool storage, automatic terminal access logs, and skills on demand to save context windows.</p>
-                </div>
-
-                <div class="insight-card">
-                    <span class="insight-tag">Architecture</span>
-                    <h3>Google ADK's Context Architecture</h3>
-                    <p>Context management can no longer mean simple string manipulation. Google ADK features tiered storage, compiled views, pipeline processing, and strict scoping for multi-agent handoffs to scale agents reliably.</p>
-                </div>
+                <a href="https://www.linkedin.com/in/sadum-yeshwanth" target="_blank" class="view-all-btn">View All on LinkedIn</a>
             </div>
 
-            <div class="insights-cta">
-                <a href="https://www.linkedin.com/in/sadum-yeshwanth" target="_blank" class="btn btn-secondary">View All Posts on LinkedIn</a>
-            </div>
-        </div>
-    </section>
-
-    <section id="skills" class="section">
-        <div class="container">
-            <h2>Skills & Certifications</h2>
-
-            <div class="skills-container">
-                <div class="skill-category">
-                    <h3>AI & Machine Learning</h3>
-                    <div class="skill-tags">
-                        <span>Generative AI</span>
-                        <span>Large Language Models</span>
-                        <span>Natural Language Processing</span>
-                        <span>LLM Observability</span>
-                        <span>Multi-agent Systems</span>
-                        <span>Deep Learning</span>
-                        <span>Anomaly Detection</span>
-                        <span>Time Series Analysis</span>
+            <div class="card">
+                <h2>Workshops Conducted</h2>
+                <div class="workshops">
+                    <div class="workshop">
+                        <strong>LLM Workshop</strong>
+                        <p>Manipal - Transformers, prompting, fine-tuning, RAG, evals</p>
                     </div>
-                </div>
-
-                <div class="skill-category">
-                    <h3>Programming & Tools</h3>
-                    <div class="skill-tags">
-                        <span>Python</span>
-                        <span>TensorFlow</span>
-                        <span>Pandas</span>
-                        <span>R</span>
-                        <span>C / Embedded C</span>
-                        <span>Matlab</span>
-                        <span>Docker</span>
-                    </div>
-                </div>
-
-                <div class="skill-category">
-                    <h3>Data & Analytics</h3>
-                    <div class="skill-tags">
-                        <span>Data Science</span>
-                        <span>Root Cause Analysis</span>
-                        <span>ClickHouse</span>
-                        <span>Grafana</span>
-                        <span>PostgreSQL</span>
-                    </div>
-                </div>
-
-                <div class="skill-category">
-                    <h3>Certifications</h3>
-                    <ul class="cert-list">
-                        <li><strong>Project: Deep Agents</strong> - LangChain (Jan 2026)</li>
-                        <li><strong>Microsoft Certified: Azure Fundamentals</strong> - Microsoft (Apr 2021)</li>
-                        <li><strong>Docker for Beginners</strong> - Coursera (Dec 2022)</li>
-                        <li><strong>Python Programming Masterclass</strong> - Udemy</li>
-                        <li><strong>Embedded Workshop</strong> - PES University</li>
-                        <li><strong>IELTS</strong> - Score: 7.5</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="workshops" class="section section-alt">
-        <div class="container">
-            <h2>Workshops & Community</h2>
-            <div class="workshops-grid">
-                <div class="workshop-column">
-                    <h3>Sessions Conducted</h3>
-                    <div class="workshop-item">
-                        <h4>LLM Workshop at Manipal</h4>
-                        <p>Conducted workshop for 2024 batch AIML and Big-data students covering transformers architecture, prompting techniques, fine-tuning, RAG, and evaluation techniques.</p>
-                    </div>
-                    <div class="workshop-item">
-                        <h4>Time Series Analysis Workshop</h4>
+                    <div class="workshop">
+                        <strong>Time Series Analysis</strong>
                         <p>Manipal School of Information Science</p>
                     </div>
-                    <div class="workshop-item">
-                        <h4>Intro to Statistics</h4>
+                    <div class="workshop">
+                        <strong>Intro to Statistics</strong>
                         <p>VuNet Systems</p>
                     </div>
                 </div>
-                <div class="workshop-column">
-                    <h3>Professional Communities</h3>
-                    <div class="community-tags">
-                        <span>AI & Machine Learning Community</span>
-                        <span>Python Developers Community</span>
-                        <span>Data Science Community</span>
-                        <span>Business Journey Observability</span>
-                    </div>
-                </div>
             </div>
-        </div>
-    </section>
 
-    <section id="contact" class="section">
-        <div class="container">
-            <h2>Get In Touch</h2>
-            <p class="contact-intro">I'm always open to discussing new opportunities, collaborations, or just having a chat about AI and ML.</p>
-            <div class="contact-links">
-                <a href="mailto:sadumyeshwanth@gmail.com" class="contact-item">
-                    <span class="contact-icon">@</span>
-                    <span>sadumyeshwanth@gmail.com</span>
-                </a>
-                <a href="https://www.linkedin.com/in/sadum-yeshwanth" target="_blank" class="contact-item">
-                    <span class="contact-icon">in</span>
-                    <span>linkedin.com/in/sadum-yeshwanth</span>
-                </a>
-                <div class="contact-item">
-                    <span class="contact-icon">@</span>
-                    <span>Bengaluru, India</span>
+            <div class="card" id="contact">
+                <h2>Get In Touch</h2>
+                <div class="contact-grid">
+                    <a href="mailto:sadumyeshwanth@gmail.com" class="contact-item">
+                        <span class="icon">@</span>
+                        <span>sadumyeshwanth@gmail.com</span>
+                    </a>
+                    <a href="https://www.linkedin.com/in/sadum-yeshwanth" target="_blank" class="contact-item">
+                        <span class="icon">in</span>
+                        <span>linkedin.com/in/sadum-yeshwanth</span>
+                    </a>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
+    </main>
 
     <footer>
-        <p>&copy; 2025 S Yeshwanth. All rights reserved.</p>
+        <p>2025 S Yeshwanth</p>
     </footer>
 </body>
 </html>
