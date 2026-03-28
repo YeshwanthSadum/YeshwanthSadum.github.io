@@ -73,6 +73,7 @@ body {
 
 .nav-menu {
     display: flex;
+    align-items: center;
     list-style: none;
     gap: 0.5rem;
 }
@@ -92,15 +93,20 @@ body {
 }
 
 .nav-menu .download-icon {
-    display: flex;
+    display: inline-flex;
     align-items: center;
-    padding: 0.5rem;
+    justify-content: center;
+    padding: 0.5rem 1rem;
     color: var(--text-secondary);
+}
+
+.nav-menu .download-icon svg {
+    vertical-align: middle;
 }
 
 .nav-menu .download-icon:hover {
     color: var(--blue);
-    background: transparent;
+    background: var(--bg);
 }
 
 /* Main Layout - Two Columns */
