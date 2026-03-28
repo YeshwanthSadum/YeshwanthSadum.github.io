@@ -431,9 +431,15 @@ body {
 }
 
 .insights-list {
-    display: flex;
-    flex-direction: column;
-    gap: 0.75rem;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+}
+
+@media (max-width: 900px) {
+    .insights-list {
+        grid-template-columns: 1fr;
+    }
 }
 
 .insight {
