@@ -4,7 +4,9 @@ A personal portfolio website built with HTML and CSS, hosted on GitHub Pages.
 
 ## Live Site
 
-Visit: https://sadum-yeshwanth.github.io
+Visit: https://yeshwanthsadum.github.io
+
+Terminal Version: https://yeshwanthsadum.github.io/terminal.html
 
 ## Features
 
@@ -19,19 +21,19 @@ Visit: https://sadum-yeshwanth.github.io
 
 1. Go to [GitHub](https://github.com) and sign in
 2. Click "New Repository"
-3. **Important:** Name it exactly `sadum-yeshwanth.github.io` (replace with your GitHub username)
+3. **Important:** Name it exactly `YeshwanthSadum.github.io` (your GitHub username)
 4. Make it Public
 5. Don't initialize with README (we already have files)
 
 ### 2. Push to GitHub
 
 ```bash
-cd sadum-yeshwanth.github.io
+cd YeshwanthSadum.github.io
 git init
 git add .
 git commit -m "Initial commit: Personal portfolio website"
 git branch -M main
-git remote add origin https://github.com/sadum-yeshwanth/sadum-yeshwanth.github.io.git
+git remote add origin https://github.com/YeshwanthSadum/YeshwanthSadum.github.io.git
 git push -u origin main
 ```
 
@@ -43,7 +45,7 @@ git push -u origin main
 4. Select "main" branch and "/ (root)" folder
 5. Click Save
 
-Your site will be live at `https://sadum-yeshwanth.github.io` within a few minutes!
+Your site will be live at `https://yeshwanthsadum.github.io` within a few minutes!
 
 ## Customization
 
