@@ -91,6 +91,17 @@ body {
     color: var(--blue);
 }
 
+.nav-menu .download-btn {
+    background: var(--blue);
+    color: white;
+    border-radius: 4px;
+}
+
+.nav-menu .download-btn:hover {
+    background: #1557b0;
+    color: white;
+}
+
 /* Main Layout - Two Columns */
 .main-content {
     display: grid;
