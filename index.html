@@ -15,6 +15,7 @@
                 <li><a href="#about">About</a></li>
                 <li><a href="#experience">Experience</a></li>
                 <li><a href="#projects">Projects</a></li>
+                <li><a href="#insights">Insights</a></li>
                 <li><a href="#skills">Skills</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
@@ -134,18 +135,19 @@
                     <h3>Technical Skills</h3>
                     <div class="skill-tags">
                         <span>Python</span>
-                        <span>ML / Time Series Analysis</span>
+                        <span>ML / Time Series</span>
                         <span>LLM / RAG</span>
-                        <span>Reinforcement Learning</span>
-                        <span>PostgreSQL</span>
-                        <span>ClickHouse</span>
-                        <span>Grafana</span>
-                        <span>Kubernetes</span>
-                        <span>Django REST</span>
+                        <span>AI Evals</span>
+                        <span>LLM Observability</span>
+                        <span>Context Engineering</span>
+                        <span>Agentic AI</span>
                         <span>Prompt Engineering</span>
                         <span>LlamaIndex</span>
-                        <span>Weaviate</span>
-                        <span>LoRA</span>
+                        <span>LangChain</span>
+                        <span>ClickHouse</span>
+                        <span>Grafana</span>
+                        <span>Django REST</span>
+                        <span>Kubernetes</span>
                     </div>
                 </div>
 
@@ -182,7 +184,56 @@
         </div>
     </section>
 
-    <section id="contact" class="section section-alt">
+    <section id="insights" class="section section-alt">
+        <div class="container">
+            <h2>Insights & Writing</h2>
+            <p class="section-intro">Thoughts on AI engineering, LLM observability, and building production AI systems.</p>
+
+            <div class="insights-grid">
+                <div class="insight-card">
+                    <span class="insight-tag">LLM Ops</span>
+                    <h3>Anthropic's Skill Creator</h3>
+                    <p>The new Skill Creator introduces engineering discipline to agent development: test, measure, refine. Features evals for agent skills, regression detection, multi-agent parallel testing, and A/B comparison.</p>
+                </div>
+
+                <div class="insight-card">
+                    <span class="insight-tag">Observability</span>
+                    <h3>True LLM Observability</h3>
+                    <p>Debugging black-box AI agents requires bringing together Metrics, Traces, Logs, and Evals. A 4-step process: spot metric spikes, visualize execution chains, drill into logs, and add failure scenarios to Evals.</p>
+                </div>
+
+                <div class="insight-card">
+                    <span class="insight-tag">AI Evals</span>
+                    <h3>Avoiding the Tools Trap</h3>
+                    <p>Generic vanity metrics waste time. Custom evaluations mapped to user pain points matter. Granular error analysis through manual trace review is the highest-leverage activity. AI must be treated as Software 3.0.</p>
+                </div>
+
+                <div class="insight-card">
+                    <span class="insight-tag">Agents</span>
+                    <h3>Deep Agents & Observability</h3>
+                    <p>Built a research agent leveraging context engineering techniques and thinking tools. For long-running agents (50+ steps), observability is the real challenge - capturing generations, tool calls, and thinking steps.</p>
+                </div>
+
+                <div class="insight-card">
+                    <span class="insight-tag">Context Engineering</span>
+                    <h3>Cursor's Dynamic Context Discovery</h3>
+                    <p>How Cursor found success: writing long outputs as files, smarter memory through chat history files, efficient tool storage, automatic terminal access logs, and skills on demand to save context windows.</p>
+                </div>
+
+                <div class="insight-card">
+                    <span class="insight-tag">Architecture</span>
+                    <h3>Google ADK's Context Architecture</h3>
+                    <p>Context management can no longer mean simple string manipulation. Google ADK features tiered storage, compiled views, pipeline processing, and strict scoping for multi-agent handoffs to scale agents reliably.</p>
+                </div>
+            </div>
+
+            <div class="insights-cta">
+                <a href="https://www.linkedin.com/in/sadum-yeshwanth" target="_blank" class="btn btn-secondary">View All Posts on LinkedIn</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="section">
         <div class="container">
             <h2>Get In Touch</h2>
             <p class="contact-intro">I'm always open to discussing new opportunities, collaborations, or just having a chat about ML and AI.</p>
