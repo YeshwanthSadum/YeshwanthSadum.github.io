@@ -325,8 +325,8 @@ body {
     box-shadow: 0 0 15px rgba(0, 255, 65, 0.1);
 }
 
-.quest.completed {
-    border-left-color: var(--cyan);
+.quest.past {
+    border-left-color: var(--text-dim);
 }
 
 .quest-header {
@@ -372,9 +372,10 @@ body {
     background: var(--green);
 }
 
-.quest-status.completed {
-    color: var(--cyan);
-    border: 1px solid var(--cyan);
+.quest-status.duration {
+    color: var(--text-dim);
+    border: 1px solid var(--border);
+    background: rgba(0, 0, 0, 0.3);
 }
 
 .quest-desc {
