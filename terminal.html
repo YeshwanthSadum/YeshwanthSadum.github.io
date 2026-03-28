@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>yeshwanth.exe | Terminal Portfolio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;700&family=Press+Start+2P&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="terminal.css">
+</head>
+<body>
+    <div class="scanlines"></div>
+    <div class="terminal">
+        <div class="terminal-header">
+            <div class="terminal-buttons">
+                <span class="btn-close"></span>
+                <span class="btn-min"></span>
+                <span class="btn-max"></span>
+            </div>
+            <div class="terminal-title">yeshwanth@portfolio:~</div>
+        </div>
+
+        <div class="terminal-body">
+            <!-- Boot Sequence -->
+            <div class="boot-sequence">
+                <p class="typing">> Initializing portfolio.exe...</p>
+                <p class="typing delay-1">> Loading skills... <span class="success">[OK]</span></p>
+                <p class="typing delay-2">> Loading experience... <span class="success">[OK]</span></p>
+                <p class="typing delay-3">> System ready. Welcome, Player 1!</p>
+            </div>
+
+            <!-- ASCII Art Header -->
+            <pre class="ascii-art">
+ _____ ___________ _   ___    _    ___   _ _____ _   _
+|   __|   ___|   _| | | \ \  / /  / _ \ | |_   _| | | |
+|__   |   ___|__  | |_| |\ \/ /  / /_\ \|   || | | |_| |
+|_____|_____|_____|_____| \  /  |  ___  ||  || | |  _  |
+                          \/ INK|_|   |_||__||_| |_| |_|
+            </pre>
+
+            <!-- Player Stats Card -->
+            <div class="section">
+                <h2 class="section-title">> PLAYER_STATS.dat</h2>
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-header">
+                            <img src="profile.jpg" alt="Player Avatar" class="avatar">
+                            <div class="player-info">
+                                <span class="player-name">S. YESHWANTH</span>
+                                <span class="player-class">Senior Engineer - Gen AI</span>
+                                <span class="player-guild">@ Bosch Global Software Technologies</span>
+                            </div>
+                        </div>
+                        <div class="health-bar">
+                            <span class="label">EXPERIENCE</span>
+                            <div class="bar"><div class="fill" style="width: 75%"></div></div>
+                            <span class="value">LVL 3+ YRS</span>
+                        </div>
+                        <div class="health-bar">
+                            <span class="label">CAFFEINATION</span>
+                            <div class="bar coffee"><div class="fill" style="width: 95%"></div></div>
+                            <span class="value">95%</span>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <p class="bio">> Specializing in <span class="highlight">Generative AI</span>, <span class="highlight">LLM Observability</span>, and <span class="highlight">Context Engineering</span>.</p>
+                        <p class="bio">> Building production-grade AI systems. Treating AI as <span class="highlight">Software 3.0</span>.</p>
+                        <p class="bio">> Location: <span class="cyan">Bengaluru, India</span></p>
+                        <p class="bio blink">> Status: Available for co-op missions_</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Skills Inventory -->
+            <div class="section">
+                <h2 class="section-title">> SKILLS_INVENTORY.json</h2>
+                <div class="inventory">
+                    <div class="inv-category">
+                        <h3><span class="legendary">[LEGENDARY]</span> AI & ML</h3>
+                        <div class="items">
+                            <span class="item legendary">Generative AI</span>
+                            <span class="item legendary">LLM Observability</span>
+                            <span class="item legendary">Context Engineering</span>
+                            <span class="item epic">Multi-agent Systems</span>
+                            <span class="item epic">RAG Systems</span>
+                            <span class="item rare">Anomaly Detection</span>
+                            <span class="item rare">Time Series</span>
+                            <span class="item rare">NLP</span>
+                        </div>
+                    </div>
+                    <div class="inv-category">
+                        <h3><span class="epic">[EPIC]</span> Tools & Weapons</h3>
+                        <div class="items">
+                            <span class="item epic">Python</span>
+                            <span class="item epic">LangChain</span>
+                            <span class="item rare">LangSmith</span>
+                            <span class="item rare">Langfuse</span>
+                            <span class="item rare">LlamaIndex</span>
+                            <span class="item common">TensorFlow</span>
+                            <span class="item common">ClickHouse</span>
+                            <span class="item common">Docker</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Experience Quest Log -->
+            <div class="section">
+                <h2 class="section-title">> QUEST_LOG.md</h2>
+                <div class="quest-log">
+                    <div class="quest active">
+                        <div class="quest-header">
+                            <span class="quest-icon">!</span>
+                            <div class="quest-info">
+                                <h3>Senior Engineer - Gen AI</h3>
+                                <span class="quest-location">Bosch Global Software Technologies</span>
+                            </div>
+                            <span class="quest-status active">ACTIVE</span>
+                        </div>
+                        <p class="quest-desc">> Building enterprise GenAI and NLP solutions. Focus on LLM observability.</p>
+                        <span class="quest-time">Jun 2025 - Present</span>
+                    </div>
+
+                    <div class="quest completed">
+                        <div class="quest-header">
+                            <span class="quest-icon">*</span>
+                            <div class="quest-info">
+                                <h3>VuNet Systems</h3>
+                                <span class="quest-location">Data Science Guild</span>
+                            </div>
+                            <span class="quest-status completed">COMPLETED</span>
+                        </div>
+                        <div class="sub-quests">
+                            <div class="sub-quest">
+                                <span class="check">[x]</span> Data Scientist <span class="xp">+1200 XP</span>
+                            </div>
+                            <div class="sub-quest">
+                                <span class="check">[x]</span> Data Science Engineer <span class="xp">+800 XP</span>
+                            </div>
+                            <div class="sub-quest">
+                                <span class="check">[x]</span> ML Intern <span class="xp">+400 XP</span>
+                            </div>
+                        </div>
+                        <p class="quest-desc">> Built RAG systems, anomaly detection, LLM apps. Total: 2 yrs 11 mos</p>
+                    </div>
+
+                    <div class="quest completed">
+                        <div class="quest-header">
+                            <span class="quest-icon">*</span>
+                            <div class="quest-info">
+                                <h3>Teaching - Reinforcement Learning</h3>
+                                <span class="quest-location">Manipal School of Information Science</span>
+                            </div>
+                            <span class="quest-status completed">COMPLETED</span>
+                        </div>
+                        <p class="quest-desc">> Instructed RL theory: MDP, Dynamic Programming, Monte Carlo.</p>
+                        <span class="quest-time">Jan 2024 - Apr 2024</span>
+                    </div>
+
+                    <div class="quest completed">
+                        <div class="quest-header">
+                            <span class="quest-icon">*</span>
+                            <div class="quest-info">
+                                <h3>Cloud Infrastructure Associate</h3>
+                                <span class="quest-location">Accenture</span>
+                            </div>
+                            <span class="quest-status completed">COMPLETED</span>
+                        </div>
+                        <p class="quest-desc">> O365, Exchange, Teams, SharePoint administration.</p>
+                        <span class="quest-time">Nov 2020 - Oct 2021</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Education Achievements -->
+            <div class="section">
+                <h2 class="section-title">> ACHIEVEMENTS_UNLOCKED.log</h2>
+                <div class="achievements">
+                    <div class="achievement">
+                        <span class="trophy gold">@</span>
+                        <div class="ach-info">
+                            <h3>Master of Engineering - AI & ML</h3>
+                            <p>Manipal Academy of Higher Education</p>
+                            <span class="ach-meta">2021-2023 | Score: 9.51 CGPA</span>
+                        </div>
+                    </div>
+                    <div class="achievement">
+                        <span class="trophy silver">@</span>
+                        <div class="ach-info">
+                            <h3>Bachelor of Engineering - ECE</h3>
+                            <p>PES University, Bengaluru</p>
+                            <span class="ach-meta">2016-2020 | Score: 8.24 CGPA</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="badges">
+                    <span class="badge">Deep Agents - LangChain</span>
+                    <span class="badge">Azure AZ-900</span>
+                    <span class="badge">Docker Certified</span>
+                    <span class="badge">IELTS 7.5</span>
+                </div>
+            </div>
+
+            <!-- Dev Logs / Insights -->
+            <div class="section">
+                <h2 class="section-title">> DEV_LOGS.txt</h2>
+                <div class="logs-grid">
+                    <div class="log-entry">
+                        <span class="log-type info">[INFO]</span>
+                        <span class="log-date">3w ago</span>
+                        <h3>Anthropic's Skill Creator</h3>
+                        <p>Engineering discipline to agent development: test -> measure -> refine. Evals for agent skills, regression detection.</p>
+                    </div>
+                    <div class="log-entry">
+                        <span class="log-type warning">[WARN]</span>
+                        <span class="log-date">3w ago</span>
+                        <h3>True LLM Observability</h3>
+                        <p>Debugging black-box AI = Metrics + Traces + Logs + Evals. Tools: LangSmith, Langfuse, Arize Phoenix.</p>
+                    </div>
+                    <div class="log-entry">
+                        <span class="log-type error">[CRITICAL]</span>
+                        <span class="log-date">1mo ago</span>
+                        <h3>Avoiding the Tools Trap</h3>
+                        <p>Generic vanity metrics waste time. Custom evals mapped to user pain points. AI = Software 3.0.</p>
+                    </div>
+                    <div class="log-entry">
+                        <span class="log-type success">[SUCCESS]</span>
+                        <span class="log-date">2mo ago</span>
+                        <h3>Deep Agents Project</h3>
+                        <p>Built research agent with context engineering. Observability is key for 50+ step agents.</p>
+                    </div>
+                    <div class="log-entry">
+                        <span class="log-type info">[INFO]</span>
+                        <span class="log-date">2mo ago</span>
+                        <h3>Claude Code + Remotion</h3>
+                        <p>AI agents generating professional videos from English prompts. React + Remotion magic.</p>
+                    </div>
+                    <div class="log-entry">
+                        <span class="log-type debug">[DEBUG]</span>
+                        <span class="log-date">2mo ago</span>
+                        <h3>Cursor's Context Discovery</h3>
+                        <p>Writing outputs as files, chat history for memory, skills on demand. Context engineering FTW.</p>
+                    </div>
+                    <div class="log-entry">
+                        <span class="log-type warning">[WARN]</span>
+                        <span class="log-date">2mo ago</span>
+                        <h3>Error Analysis & LLMs</h3>
+                        <p>LLMs accelerate evals but can't replace human judgment in discovery phase.</p>
+                    </div>
+                    <div class="log-entry">
+                        <span class="log-type info">[INFO]</span>
+                        <span class="log-date">2mo ago</span>
+                        <h3>Google ADK Architecture</h3>
+                        <p>Context != string manipulation. Tiered storage, compiled views, strict scoping for multi-agent.</p>
+                    </div>
+                    <div class="log-entry">
+                        <span class="log-type success">[SUCCESS]</span>
+                        <span class="log-date">3mo ago</span>
+                        <h3>BGSW & MiDAS Recognition</h3>
+                        <p>Achievement unlocked! Team recognition. Ready for new heights.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Contact / Connect -->
+            <div class="section">
+                <h2 class="section-title">> CONNECT.sh</h2>
+                <div class="terminal-commands">
+                    <p class="command">$ ping sadumyeshwanth@gmail.com</p>
+                    <p class="response">PING successful - <a href="mailto:sadumyeshwanth@gmail.com">Send Message</a></p>
+
+                    <p class="command">$ curl linkedin.com/in/sadum-yeshwanth</p>
+                    <p class="response">200 OK - <a href="https://www.linkedin.com/in/sadum-yeshwanth" target="_blank">View Profile</a></p>
+
+                    <p class="command">$ call +91-9972300878</p>
+                    <p class="response">Dialing... <a href="tel:+919972300878">Connect</a></p>
+                </div>
+            </div>
+
+            <!-- Footer -->
+            <div class="footer">
+                <p>> System uptime: Since 1998</p>
+                <p>> Last updated: 2025</p>
+                <p class="blink">> Press any key to continue_</p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
