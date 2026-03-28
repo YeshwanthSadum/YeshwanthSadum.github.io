@@ -91,15 +91,16 @@ body {
     color: var(--blue);
 }
 
-.nav-menu .download-btn {
-    background: var(--blue);
-    color: white;
-    border-radius: 4px;
+.nav-menu .download-icon {
+    display: flex;
+    align-items: center;
+    padding: 0.5rem;
+    color: var(--text-secondary);
 }
 
-.nav-menu .download-btn:hover {
-    background: #1557b0;
-    color: white;
+.nav-menu .download-icon:hover {
+    color: var(--blue);
+    background: transparent;
 }
 
 /* Main Layout - Two Columns */
