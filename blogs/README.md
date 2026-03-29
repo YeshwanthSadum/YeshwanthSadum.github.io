@@ -99,10 +99,19 @@ Push to `main` — the workflow auto-rebuilds.
 
 ## Local preview
 
+To preview the blog locally before pushing:
+
 ```bash
 cd blogs
-gem install bundler
-bundle install
-bundle exec jekyll serve
-# Open http://localhost:4000/blogs
+gem install bundler        # Install bundler (one-time)
+bundle install             # Install dependencies from Gemfile
+bundle exec jekyll serve   # Start local dev server
+# Open http://localhost:4000/blogs in your browser
 ```
+
+**How this maps to GitHub Pages:**
+- `gem install bundler` — GitHub Actions runs `ruby/setup-ruby` with bundler enabled.
+- `bundle install` — GitHub Actions caches dependencies automatically.
+- `bundle exec jekyll serve` — GitHub Actions runs `bundle exec jekyll build` (builds without serving) and publishes to gh-pages.
+
+You do **not** need to run these commands on GitHub; the workflow handles everything on push.
