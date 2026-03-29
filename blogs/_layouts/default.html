@@ -15,7 +15,16 @@
 
   <header class="site-header">
     <nav class="nav-inner">
-      <a href="{{ '/' | relative_url }}" class="site-logo">Y.</a>
+      {% if page.title %}
+        <div class="site-logo">
+          <span class="blog-title">{{ page.title }}</span>
+          {% if page.subtitle %}
+            <span class="blog-subtitle">{{ page.subtitle }}</span>
+          {% endif %}
+        </div>
+      {% else %}
+        <a href="{{ '/' | relative_url }}" class="site-logo">Y.</a>
+      {% endif %}
       <div class="nav-links">
         <a href="{{ '/' | relative_url }}">Writing</a>
         <a href="https://github.com/YeshwanthSadum" target="_blank" rel="noopener">GitHub</a>
@@ -35,5 +44,18 @@
   </footer>
 
   <script src="{{ '/assets/js/main.js' | relative_url }}"></script>
+
+  <style>
+    .blog-title {
+      font-size: 1.5rem;
+      font-weight: bold;
+    }
+    .blog-subtitle {
+      font-size: 1rem;
+      color: #666;
+      display: block;
+      margin-top: 0.2rem;
+    }
+  </style>
 </body>
 </html>
