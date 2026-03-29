@@ -5,24 +5,6 @@ title: Writing
 
 <div class="post-list">
   {% for post in site.posts %}
-    {% if forloop.first %}
-    <!-- Featured post -->
-    <div class="card featured-post">
-      <p class="index-hero-label">Featured</p>
-      <h1 class="featured-title">{{ post.title }}</h1>
-      {% if post.excerpt %}
-        <p class="featured-excerpt">{{ post.excerpt | strip_html }}</p>
-      {% endif %}
-      <p class="post-meta">
-        <strong>Published:</strong> {{ post.date | date: "%b %-d, %Y" }}
-        {% if post.tags %}
-        | <strong>Tags:</strong> {{ post.tags | join: ", " }}
-        {% endif %}
-      </p>
-      <a href="{{ post.url | relative_url }}" class="post-list-arrow">Read Full Post →</a>
-    </div>
-    {% else %}
-    <!-- Other posts -->
     <div class="card other-post">
       <div class="post-list-date">{{ post.date | date: "%b %-d, %Y" }}</div>
       {% if post.tags %}
@@ -40,7 +22,6 @@ title: Writing
       {% endif %}
       <a href="{{ post.url | relative_url }}" class="post-list-arrow">Read →</a>
     </div>
-    {% endif %}
   {% endfor %}
 </div>
 
