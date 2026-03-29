@@ -16,10 +16,10 @@
   <header class="site-header">
     <nav class="nav-inner">
       {% if page.layout == 'post' %}
-        <div class="site-logo">
-          <span class="blog-title">{{ page.title }}</span>
+        <div class="post-title-block">
+          <div class="post-page-title">{{ page.title }}</div>
           {% if page.subtitle %}
-            <span class="blog-subtitle">{{ page.subtitle }}</span>
+            <div class="post-page-subtitle">{{ page.subtitle }}</div>
           {% endif %}
         </div>
       {% else %}
@@ -46,15 +46,23 @@
   <script src="{{ '/assets/js/main.js' | relative_url }}"></script>
 
   <style>
-    .blog-title {
-      font-size: 1.5rem;
-      font-weight: bold;
+    .post-title-block {
+      display: flex;
+      flex-direction: column;
+      color: #fff;
+      text-align: left;
+      max-width: 100%;
     }
-    .blog-subtitle {
-      font-size: 1rem;
-      color: #666;
-      display: block;
-      margin-top: 0.2rem;
+    .post-page-title {
+      font-size: 1.4rem;
+      font-weight: 900;
+      line-height: 1.1;
+      color: #fff;
+      margin-bottom: 0.2rem;
+    }
+    .post-page-subtitle {
+      font-size: 0.9rem;
+      color: #dcdcdc;
     }
   </style>
 </body>
