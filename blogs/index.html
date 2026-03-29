@@ -42,41 +42,84 @@
   </header>
 
   <main class="main-content">
-    <div class="profile-card">
-  <img src="../profile.jpg" alt="S Yeshwanth" class="profile-photo">
-  <h1>S Yeshwanth</h1>
-  <p class="title">Senior Engineer - Gen AI</p>
-  <p class="company">Bosch Global Software Technologies</p>
-  <p class="location">Bengaluru, India</p>
-  <div class="social-links">
-    <a href="https://www.linkedin.com/in/sadum-yeshwanth" target="_blank" class="social-btn linkedin">LinkedIn</a>
-    <a href="mailto:sadumyeshwanth@gmail.com" class="social-btn email">Email</a>
-  </div>
-</div>
-
-<div class="post-list">
+    <div class="post-list">
   
     
     <!-- Featured post -->
-    <div class="card">
+    <div class="card featured-post">
       <p class="index-hero-label">Featured</p>
-      <h1>Agents Are in Production. Evals Are Still Catching Up.</h1>
+      <h1 class="featured-title">Agents Are in Production. Evals Are Still Catching Up.</h1>
       
-        <p>The question in 2025 was: should we build agents?
+        <p class="featured-excerpt">The question in 2025 was: should we build agents?
 
 </p>
       
-      <p style="font-size: 0.9em; color: #666; margin-top: 1rem;">
+      <p class="post-meta">
         <strong>Published:</strong> Mar 29, 2026
         
         | <strong>Tags:</strong> agents, evals, observability, LLMs
         
       </p>
-      <a href="/blogs/2026/03/29/agents-evals-2026/" class="post-list-arrow" style="display: inline-block; margin-top: 1rem;">Read Full Post →</a>
+      <a href="/blogs/2026/03/29/agents-evals-2026/" class="post-list-arrow">Read Full Post →</a>
     </div>
     
   
 </div>
+
+<style>
+  .post-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+  .card {
+    padding: 1.5rem;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background-color: #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  .featured-post {
+    background-color: #f9f9f9;
+    border-left: 4px solid #007acc;
+  }
+  .featured-title {
+    font-size: 1.8rem;
+    margin-bottom: 0.5rem;
+  }
+  .featured-excerpt {
+    font-size: 1.1rem;
+    color: #555;
+  }
+  .post-meta {
+    font-size: 0.9rem;
+    color: #666;
+  }
+  .other-post .post-list-title {
+    font-size: 1.5rem;
+    margin: 0.5rem 0;
+  }
+  .post-list-tags {
+    margin-bottom: 0.5rem;
+  }
+  .tag {
+    display: inline-block;
+    background-color: #007acc;
+    color: #fff;
+    padding: 0.2rem 0.5rem;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    margin-right: 0.3rem;
+  }
+  .post-list-arrow {
+    color: #007acc;
+    text-decoration: none;
+    font-weight: bold;
+  }
+  .post-list-arrow:hover {
+    text-decoration: underline;
+  }
+</style>
 
   </main>
 
