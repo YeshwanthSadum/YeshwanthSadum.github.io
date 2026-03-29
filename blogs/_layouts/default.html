@@ -15,16 +15,6 @@
 
   <header class="site-header">
     <nav class="nav-inner">
-      {% if page.layout == 'post' %}
-        <div class="post-title-block">
-          <div class="post-page-title">{{ page.title }}</div>
-          {% if page.subtitle %}
-            <div class="post-page-subtitle">{{ page.subtitle }}</div>
-          {% endif %}
-        </div>
-      {% else %}
-        <a href="{{ '/' | relative_url }}" class="site-logo">Y.</a>
-      {% endif %}
       <div class="nav-links">
         <a href="{{ '/' | relative_url }}">Writing</a>
         <a href="https://github.com/YeshwanthSadum" target="_blank" rel="noopener">GitHub</a>
