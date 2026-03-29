@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.10.0">Jekyll</generator><link href="https://yeshwanthsadum.github.io/blogs/feed.xml" rel="self" type="application/atom+xml" /><link href="https://yeshwanthsadum.github.io/blogs/" rel="alternate" type="text/html" /><updated>2026-03-29T17:00:02+00:00</updated><id>https://yeshwanthsadum.github.io/blogs/feed.xml</id><title type="html">Yeshwanth | AI Systems</title><subtitle>Writing on agents, evals, LLMs, and AI platform engineering.</subtitle><author><name>Yeshwanth Sadum</name></author><entry><title type="html">Agents Are in Production. Evals Are Still Catching Up.</title><link href="https://yeshwanthsadum.github.io/blogs/2026/03/29/agents-evals-2026/" rel="alternate" type="text/html" title="Agents Are in Production. Evals Are Still Catching Up." /><published>2026-03-29T00:00:00+00:00</published><updated>2026-03-29T00:00:00+00:00</updated><id>https://yeshwanthsadum.github.io/blogs/2026/03/29/agents-evals-2026</id><content type="html" xml:base="https://yeshwanthsadum.github.io/blogs/2026/03/29/agents-evals-2026/"><![CDATA[<p>The question in 2025 was: <em>should we build agents?</em></p>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.10.0">Jekyll</generator><link href="https://yeshwanthsadum.github.io/blogs/feed.xml" rel="self" type="application/atom+xml" /><link href="https://yeshwanthsadum.github.io/blogs/" rel="alternate" type="text/html" /><updated>2026-03-29T17:05:15+00:00</updated><id>https://yeshwanthsadum.github.io/blogs/feed.xml</id><title type="html">Yeshwanth | AI Systems</title><subtitle>Writing on agents, evals, LLMs, and AI platform engineering.</subtitle><author><name>Yeshwanth Sadum</name></author><entry><title type="html">Agents Are in Production. Evals Are Still Catching Up.</title><link href="https://yeshwanthsadum.github.io/blogs/2026/03/29/agents-evals-2026/" rel="alternate" type="text/html" title="Agents Are in Production. Evals Are Still Catching Up." /><published>2026-03-29T00:00:00+00:00</published><updated>2026-03-29T00:00:00+00:00</updated><id>https://yeshwanthsadum.github.io/blogs/2026/03/29/agents-evals-2026</id><content type="html" xml:base="https://yeshwanthsadum.github.io/blogs/2026/03/29/agents-evals-2026/"><![CDATA[<p>The question in 2025 was: <em>should we build agents?</em></p>
 
 <p>The question in 2026 is: <em>why isn’t ours reliable enough to trust at scale?</em></p>
 
@@ -100,51 +100,13 @@
   <li>LangChain, <em>January 2026 Newsletter</em> — <a href="https://blog.langchain.com/january-2026-langchain-newsletter/">blog.langchain.com</a></li>
   <li>Deloitte, <em>AI Agent Observability Report</em>, January 2026 (via LangChain summary)</li>
   <li>IBM Research, <em>Agent Observability</em> (via LangChain summary)</li>
-</ul>]]></content><author><name>Yeshwanth Sadum</name></author><category term="agents" /><category term="evals" /><category term="observability" /><category term="LLMs" /><summary type="html"><![CDATA[The question in 2025 was: should we build agents?]]></summary></entry><entry><title type="html">Why isn’t ours reliable enough to trust at scale?</title><link href="https://yeshwanthsadum.github.io/blogs/2026/03/29/agents-reliability-2026/" rel="alternate" type="text/html" title="Why isn’t ours reliable enough to trust at scale?" /><published>2026-03-29T00:00:00+00:00</published><updated>2026-03-29T00:00:00+00:00</updated><id>https://yeshwanthsadum.github.io/blogs/2026/03/29/agents-reliability-2026</id><content type="html" xml:base="https://yeshwanthsadum.github.io/blogs/2026/03/29/agents-reliability-2026/"><![CDATA[<p>The question in 2025 was: <strong>should we build agents?</strong></p>
-
-<p>The question in 2026 is: <strong>why isn’t ours reliable enough to trust at scale?</strong></p>
-
-<p>LangChain’s 2026 State of Agent Engineering survey (1,300+ professionals) found <strong>57% of orgs now have agents in production</strong> — up from 51% last year. The conversation has moved from demos to deployments.</p>
-
-<p>But the problems have moved too.</p>
-
-<p><strong>Quality is the #1 production killer (32%), not cost.</strong> And here’s the stat that should bother everyone building in this space:</p>
-
-<p>→ <strong>Observability adoption: 89%</strong><br />
-→ <strong>Offline evals adoption: 52%</strong><br />
-→ <strong>Online evals adoption: 37%</strong></p>
-
-<p><em>(Source: LangChain, State of Agent Engineering 2026)</em></p>
-
-<p>We’re great at logging what happened. We’re still treating evals as optional.</p>
-
-<p>As LangChain’s January 2026 newsletter put it: <strong>traditional software treats tracing and testing as separate — with agents, they’re inseparable.</strong> Production traces become test cases. Evaluation suites grow continuously from real-world failures.</p>
-
-<h2 id="the-winning-pattern">The Winning Pattern</h2>
-
-<p>The teams winning in production aren’t running the smartest models. They’re the ones who’ve closed the loop:</p>
-
-<ol>
-  <li><strong>Trace every agent run in production</strong></li>
-  <li><strong>Flag anomalous/failed runs automatically</strong></li>
-  <li><strong>Route failures back into offline eval datasets</strong></li>
-  <li><strong>Iterate on prompts, tools, and routing logic with that data</strong></li>
-</ol>
-
-<p>Without steps 3 and 4, you’re flying blind between deployments.</p>
-
-<h2 id="architecture-the-puppeteer-pattern">Architecture: The Puppeteer Pattern</h2>
-
-<p>Architecturally, the <strong>“puppeteer” pattern</strong> — a central orchestrator + specialized sub-agents — is becoming the production default (LangGraph leading the way). Bounded scope is more debuggable. Same lesson microservices taught us a decade ago.</p>
-
-<h2 id="key-insights">Key Insights</h2>
-
-<ul>
-  <li><strong>Why LLM-as-judge is dominating:</strong> 53% adoption because it scales human judgment</li>
-  <li><strong>Why online evals jump to 45% once you hit production:</strong> Real data forces you to test</li>
-  <li><strong>What the closed-loop eval pattern looks like in practice:</strong> Continuous feedback loops from production</li>
 </ul>
 
 <hr />
 
-<p><strong>What’s the biggest eval or observability challenge in your agent stack right now?</strong> Let me know in the comments or reach out on LinkedIn.</p>]]></content><author><name>Yeshwanth Sadum</name></author><category term="agents" /><category term="evals" /><category term="observability" /><summary type="html"><![CDATA[The question in 2025 was: should we build agents? The question in 2026 is: why isn't ours reliable enough to trust at scale? LangChain's 2026 State of Agent Engineering survey reveals quality is the #1 production killer, and we're still flying blind on evals.]]></summary></entry></feed>
+<p><strong>Contact</strong></p>
+
+<p>Have thoughts or feedback? Feel free to reach out:</p>
+<ul>
+  <li><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/sadum-yeshwanth/">linkedin.com/in/sadum-yeshwanth</a></li>
+</ul>]]></content><author><name>Yeshwanth Sadum</name></author><category term="agents" /><category term="evals" /><category term="observability" /><category term="LLMs" /><summary type="html"><![CDATA[The question in 2025 was: should we build agents?]]></summary></entry></feed>
