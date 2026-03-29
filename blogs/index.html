@@ -15,17 +15,28 @@ title: Writing
   </div>
 </div>
 
-<div class="card">
-  <p class="index-hero-label">Writing</p>
-  <h1>AI systems, agents,<br>and platform engineering.</h1>
-  <p>By S Yeshwanth - Gen AI at Bosch Global Software Technologies.</p>
-</div>
-
 <div class="post-list">
   {% for post in site.posts %}
-  <a class="post-list-item" href="{{ post.url | relative_url }}">
-    <div class="post-list-date">{{ post.date | date: "%b %-d, %Y" }}</div>
-    <div class="post-list-right">
+    {% if forloop.first %}
+    <!-- Featured post -->
+    <div class="card">
+      <p class="index-hero-label">Featured</p>
+      <h1>{{ post.title }}</h1>
+      {% if post.excerpt %}
+        <p>{{ post.excerpt | strip_html }}</p>
+      {% endif %}
+      <p style="font-size: 0.9em; color: #666; margin-top: 1rem;">
+        <strong>Published:</strong> {{ post.date | date: "%b %-d, %Y" }}
+        {% if post.tags %}
+        | <strong>Tags:</strong> {{ post.tags | join: ", " }}
+        {% endif %}
+      </p>
+      <a href="{{ post.url | relative_url }}" class="post-list-arrow" style="display: inline-block; margin-top: 1rem;">Read Full Post →</a>
+    </div>
+    {% else %}
+    <!-- Other posts -->
+    <div class="card">
+      <div class="post-list-date">{{ post.date | date: "%b %-d, %Y" }}</div>
       {% if post.tags %}
       <div class="post-list-tags">
         {% for tag in post.tags %}
@@ -33,12 +44,14 @@ title: Writing
         {% endfor %}
       </div>
       {% endif %}
-      <div class="post-list-title">{{ post.title }}</div>
+      <h2 class="post-list-title">
+        <a href="{{ post.url | relative_url }}" style="text-decoration: none; color: inherit;">{{ post.title }}</a>
+      </h2>
       {% if post.excerpt %}
-        <div class="post-list-excerpt">{{ post.excerpt | strip_html | truncate: 140 }}</div>
+        <p class="post-list-excerpt">{{ post.excerpt | strip_html | truncate: 180 }}</p>
       {% endif %}
-      <div class="post-list-arrow">Read →</div>
+      <a href="{{ post.url | relative_url }}" class="post-list-arrow" style="display: inline-block; margin-top: 0.5rem;">Read →</a>
     </div>
-  </a>
+    {% endif %}
   {% endfor %}
 </div>
