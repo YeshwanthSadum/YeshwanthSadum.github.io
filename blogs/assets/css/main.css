@@ -56,7 +56,7 @@ body {
   justify-content: space-between;
 }
 
-/* .site-logo {
+.site-logo {
   font-family: var(--font-display);
   font-size: 1.6rem;
   font-weight: 900;
@@ -65,7 +65,7 @@ body {
   letter-spacing: -0.02em;
   transition: opacity 0.2s;
 }
-.site-logo:hover { opacity: 0.75; } */
+.site-logo:hover { opacity: 0.75; }
 
 .nav-links {
   display: flex;
