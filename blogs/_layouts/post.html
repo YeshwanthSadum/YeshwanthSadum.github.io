@@ -28,6 +28,9 @@ layout: default
       <a class="share-btn" href="https://www.linkedin.com/sharing/share-offsite/?url={{ page.url | absolute_url | url_encode }}" target="_blank" rel="noopener">Share on LinkedIn</a>
       <a class="share-btn" href="https://twitter.com/intent/tweet?text={{ page.title | url_encode }}&url={{ page.url | absolute_url | url_encode }}" target="_blank" rel="noopener">Share on X</a>
     </div>
-    <a href="{{ '/' | relative_url }}" class="back-link">← All writing</a>
+    <div class="post-nav">
+      <a href="{{ '/' | relative_url }}" class="back-link">← All writing</a>
+      <a href="{{ '/blogs/' | relative_url }}" class="back-link">← Back to blog list</a>
+    </div>
   </footer>
 </article>

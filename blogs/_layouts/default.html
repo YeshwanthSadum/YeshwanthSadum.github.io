@@ -15,13 +15,15 @@
 
   <header class="site-header">
     <nav class="nav-inner">
-      {% if page.title %}
+      {% if page.layout == 'post' %}
         <div class="site-logo">
           <span class="blog-title">{{ page.title }}</span>
           {% if page.subtitle %}
             <span class="blog-subtitle">{{ page.subtitle }}</span>
           {% endif %}
         </div>
+      {% else %}
+        <a href="{{ '/' | relative_url }}" class="site-logo">Y.</a>
       {% endif %}
       <div class="nav-links">
         <a href="{{ '/' | relative_url }}">Writing</a>
