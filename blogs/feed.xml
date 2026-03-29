@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.10.0">Jekyll</generator><link href="https://yeshwanthsadum.github.io/blogs/feed.xml" rel="self" type="application/atom+xml" /><link href="https://yeshwanthsadum.github.io/blogs/" rel="alternate" type="text/html" /><updated>2026-03-29T16:39:18+00:00</updated><id>https://yeshwanthsadum.github.io/blogs/feed.xml</id><title type="html">Yeshwanth | AI Systems</title><subtitle>Writing on agents, evals, LLMs, and AI platform engineering.</subtitle><author><name>Yeshwanth Sadum</name></author><entry><title type="html">Agents Are in Production. Evals Are Still Catching Up.</title><link href="https://yeshwanthsadum.github.io/blogs/2026/03/29/agents-evals-2026/" rel="alternate" type="text/html" title="Agents Are in Production. Evals Are Still Catching Up." /><published>2026-03-29T00:00:00+00:00</published><updated>2026-03-29T00:00:00+00:00</updated><id>https://yeshwanthsadum.github.io/blogs/2026/03/29/agents-evals-2026</id><content type="html" xml:base="https://yeshwanthsadum.github.io/blogs/2026/03/29/agents-evals-2026/"><![CDATA[<p>The question in 2025 was: <em>should we build agents?</em></p>
+
+<p>The question in 2026 is: <em>why isn’t ours reliable enough to trust at scale?</em></p>
+
+<p>That’s not pessimism — it’s progress. According to <a href="https://www.langchain.com/state-of-agent-engineering">LangChain’s 2026 State of Agent Engineering survey</a> of 1,300+ professionals, <strong>57% of organizations now have agents in production</strong>, up from 51% the previous year. The conversation has moved from demos to deployments. That’s real.</p>
+
+<p>But the problems have moved too.</p>
+
+<hr />
+
+<h2 id="the-1-production-killer-quality">The #1 Production Killer: Quality</h2>
+
+<p>Cost concerns have dropped year-over-year as a worry. What’s replaced them? Quality — <strong>cited by 32% of teams as their primary barrier</strong> to scaling agents (<a href="https://www.langchain.com/state-of-agent-engineering">LangChain, 2026</a>). Latency has emerged as the second biggest challenge at 20%, especially as agents move into customer-facing use cases where response time is part of the experience.</p>
+
+<p>That maps to what most builders experience firsthand: individual LLM calls are getting cheaper and faster. But stringing them into a workflow that behaves <em>predictably</em> across edge cases? That’s still genuinely hard.</p>
+
+<p>As LangChain’s engineering team noted, the debugging question for agents shifts from “which function failed?” to something far harder: why did the agent make a particular decision at step 23 of a 200-step chain? Deloitte’s January 2026 report on AI agent observability echoed this, noting that enterprises need entirely new governance approaches for agents whose behavior “can shift based on context and data availability.”</p>
+
+<hr />
+
+<h2 id="the-architecture-is-maturing">The Architecture Is Maturing</h2>
+
+<p>One clear signal of a maturing field: architectures are getting more opinionated.</p>
+
+<p>The emerging pattern is a <strong>central orchestrator coordinating a team of specialized sub-agents</strong> — what LangChain’s community calls the “puppeteer” model. Instead of one large, do-everything agent, you get composable specialists: a retrieval agent, a reasoning agent, a formatting agent, a validation agent. LangGraph has become the go-to production framework for this pattern, valued for its explicit, debuggable state management.</p>
+
+<p>This mirrors what happened with microservices a decade ago. The monolith worked — until it didn’t. Then teams broke it apart, not because distributed systems are simpler, but because <strong>bounded scope is more debuggable</strong>. The same principle applies here. A 3,000-token prompt doing five things is a nightmare to trace. A well-scoped sub-agent with clear inputs and outputs is not.</p>
+
+<hr />
+
+<h2 id="evals-52-adoption-is-not-enough">Evals: 52% Adoption Is Not Enough</h2>
+
+<p>Here’s the stat that should concern anyone building production AI systems (<a href="https://www.langchain.com/state-of-agent-engineering">LangChain, 2026</a>):</p>
+
+<ul>
+  <li><strong>Observability</strong> adoption: <strong>89%</strong></li>
+  <li><strong>Offline evals</strong> adoption: <strong>52%</strong></li>
+  <li><strong>Online evals</strong> adoption: <strong>37%</strong></li>
+</ul>
+
+<p>Tracing what happens is now table stakes. Measuring whether what happened was <em>good</em> — that’s still optional in most orgs.</p>
+
+<p>The dominant evaluation approaches today are <strong>human review (60%)</strong> and <strong>LLM-as-judge (53%)</strong>. Traditional ML metrics like ROUGE and BLEU barely register — and rightfully so. They were designed for a different era of NLP, and they fail to capture what matters in agentic workflows: task completion, reasoning coherence, and downstream utility.</p>
+
+<p>Online evals are growing, though. Among teams that already have agents in production, online eval adoption jumps to <strong>44.8%</strong>, suggesting that once you face real users, the pressure to monitor live behavior becomes hard to ignore. Of organizations that run any evals at all, nearly a quarter now combine both offline and online approaches.</p>
+
+<hr />
+
+<h2 id="the-closed-loop-problem">The Closed-Loop Problem</h2>
+
+<p>This is the real frontier.</p>
+
+<p>The gap isn’t between teams that trace and teams that don’t. It’s between teams that have a <strong>closed loop</strong> between production failures and their eval pipeline — and those still treating evals as a pre-deployment ritual.</p>
+
+<p>As <a href="https://blog.langchain.com/january-2026-langchain-newsletter/">LangChain’s January 2026 newsletter</a> noted: traditional software treats tracing and testing as separate concerns. With agents, they’re inseparable. Production traces become test cases. Evaluation suites grow continuously from real-world examples rather than engineered scenarios.</p>
+
+<p>IBM’s research on agent observability supports this view: modern agents “do not follow deterministic paths” and require telemetry that captures decisions, execution paths, and tool calls — not just uptime metrics.</p>
+
+<p>True reliability requires:</p>
+
+<ol>
+  <li><strong>Trace</strong> every agent run in production</li>
+  <li><strong>Flag</strong> anomalous or failed runs automatically</li>
+  <li><strong>Route</strong> those cases back into offline eval datasets</li>
+  <li><strong>Iterate</strong> on prompts, tools, and routing logic with that data</li>
+</ol>
+
+<p>Without steps 3 and 4, you’re flying blind between deployments. You know something went wrong. You don’t systematically know <em>what</em> or <em>how often</em>.</p>
+
+<p>This is exactly why platforms like <a href="https://langfuse.com">Langfuse</a> are increasingly being used not just for observability, but as connective tissue for the full loop — storing traces, tagging failures, and feeding structured data back into prompt iteration workflows.</p>
+
+<hr />
+
+<h2 id="what-this-means-for-builders">What This Means for Builders</h2>
+
+<p>The practical priorities in 2026:</p>
+
+<ul>
+  <li><strong>Don’t skip evals.</strong> Shipping without them is shipping without tests.</li>
+  <li><strong>Invest in LLM-as-judge pipelines</strong> — they’re imperfect but scalable.</li>
+  <li><strong>Build the feedback loop early.</strong> It’s much harder to retrofit than to design in.</li>
+  <li><strong>Specialize your agents.</strong> Monolithic prompt engineering has a ceiling.</li>
+  <li><strong>Treat reliability as a first-class metric</strong>, not a postlaunch concern.</li>
+</ul>
+
+<p>The teams winning in production aren’t necessarily running the smartest models. They’re the ones who’ve operationalized learning — who know when their system fails, why it fails, and how to fix it systematically.</p>
+
+<p>That’s the gap. And it’s closable.</p>
+
+<hr />
+
+<p><em>What’s the biggest eval or observability challenge you’re running into in your agent stack right now? I’d love to hear what’s working.</em></p>
+
+<hr />
+
+<p><strong>Sources</strong></p>
+
+<ul>
+  <li>LangChain, <em>State of Agent Engineering 2026</em> — <a href="https://www.langchain.com/state-of-agent-engineering">langchain.com/state-of-agent-engineering</a></li>
+  <li>LangChain, <em>January 2026 Newsletter</em> — <a href="https://blog.langchain.com/january-2026-langchain-newsletter/">blog.langchain.com</a></li>
+  <li>Deloitte, <em>AI Agent Observability Report</em>, January 2026 (via LangChain summary)</li>
+  <li>IBM Research, <em>Agent Observability</em> (via LangChain summary)</li>
+</ul>]]></content><author><name>Yeshwanth Sadum</name></author><category term="agents" /><category term="evals" /><category term="observability" /><category term="LLMs" /><summary type="html"><![CDATA[The question in 2025 was: should we build agents?]]></summary></entry></feed>
