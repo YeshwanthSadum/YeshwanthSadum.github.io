@@ -5,6 +5,11 @@ title: Writing
 
 <div class="post-list">
   {% for post in site.posts %}
+    {% if post.link %}
+      {% assign post_url = post.link %}
+    {% else %}
+      {% assign post_url = post.url | relative_url %}
+    {% endif %}
     <div class="card other-post">
       <div class="post-list-date">{{ post.date | date: "%b %-d, %Y" }}</div>
       {% if post.tags %}
@@ -15,12 +20,12 @@ title: Writing
       </div>
       {% endif %}
       <h2 class="post-list-title">
-        <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
+        <a href="{{ post_url }}">{{ post.title }}</a>
       </h2>
       {% if post.excerpt %}
         <p class="post-list-excerpt">{{ post.excerpt | strip_html | truncate: 180 }}</p>
       {% endif %}
-      <a href="{{ post.url | relative_url }}" class="post-list-arrow">Read →</a>
+      <a href="{{ post_url }}" class="post-list-arrow">Read →</a>
     </div>
   {% endfor %}
 </div>
