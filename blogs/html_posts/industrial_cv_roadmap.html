@@ -1,0 +1,368 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>Industrial CV Roadmap</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans+Condensed:wght@500;600;700&family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap">
+<style>
+/* Layout: one reading column; a sticky progress gauge; each phase is a collapsible inspection station */
+:root {
+  --bg: #f3f5f7; --surface: #ffffff; --fg: #18202a; --muted: #5a6675; --line: #d8dee5;
+  --accent: #0b6e8a; --accent-soft: #e2f0f4; --mark: #c27a00; --done: #2f7d4f;
+  --display: "IBM Plex Sans Condensed", "Arial Narrow", system-ui, sans-serif;
+  --body: "IBM Plex Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --mono: "IBM Plex Mono", ui-monospace, "SF Mono", Menlo, monospace;
+}
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) {
+  --bg: #11161c; --surface: #18202a; --fg: #e4e9ee; --muted: #94a1b0; --line: #2a3542;
+  --accent: #4fb3cf; --accent-soft: #15303a; --mark: #e0a440; --done: #5cbf84; color-scheme: dark } }
+:root[data-theme="dark"] {
+  --bg: #11161c; --surface: #18202a; --fg: #e4e9ee; --muted: #94a1b0; --line: #2a3542;
+  --accent: #4fb3cf; --accent-soft: #15303a; --mark: #e0a440; --done: #5cbf84; color-scheme: dark }
+
+body { background: var(--bg); color: var(--fg); font-family: var(--body); font-size: 15px; line-height: 1.55; }
+.wrap { max-width: 820px; margin: 0 auto; padding-block: 32px 64px;
+  padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
+a { color: var(--accent); text-underline-offset: 2px; }
+a:focus-visible, button:focus-visible, summary:focus-visible, input:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+header .eyebrow { font-family: var(--mono); font-size: 12px; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); }
+h1 { font-family: var(--display); font-weight: 700; font-size: clamp(30px, 6vw, 44px); line-height: 1.05; margin: 6px 0 12px; text-wrap: balance; }
+.lead { max-width: 65ch; color: var(--fg); margin: 0 0 8px; }
+.lead strong { color: var(--accent); }
+.note { font-size: 13px; color: var(--muted); margin: 0; }
+
+.gauge { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 5; background: var(--bg);
+  padding-block: 14px; margin-top: 20px; border-bottom: 1px solid var(--line); display: grid; gap: 8px; }
+.gauge-row { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; flex-wrap: wrap; }
+.gauge-label { font-family: var(--mono); font-size: 12px; text-transform: uppercase; letter-spacing: .06em; color: var(--muted); }
+.gauge-val { font-family: var(--mono); font-variant-numeric: tabular-nums; font-size: 13px; }
+.bar { height: 6px; background: var(--line); border-radius: 3px; overflow: hidden; }
+.bar > i { display: block; height: 100%; width: 0; background: var(--accent); transition: width .3s; }
+.tools { display: flex; gap: 8px; flex-wrap: wrap; }
+.tools button { font: 500 12px var(--mono); background: var(--surface); color: var(--fg); border: 1px solid var(--line);
+  border-radius: 4px; padding: 5px 10px; cursor: pointer; }
+.tools button:hover { border-color: var(--accent); color: var(--accent); }
+
+.phases { display: grid; gap: 10px; margin-top: 20px; }
+details.phase { background: var(--surface); border: 1px solid var(--line); border-radius: 6px; }
+details.phase[data-core="1"] { border-left: 3px solid var(--mark); }
+summary { list-style: none; cursor: pointer; padding: 14px 16px; display: grid; grid-template-columns: auto 1fr auto; gap: 4px 14px; align-items: center; }
+summary::-webkit-details-marker { display: none; }
+.pnum { font-family: var(--mono); font-size: 13px; color: var(--muted); font-variant-numeric: tabular-nums; width: 2.2ch; }
+.ptitle { font-family: var(--display); font-weight: 600; font-size: 19px; line-height: 1.2; min-width: 0; text-wrap: balance; }
+.pmeta { grid-column: 2 / 3; display: flex; gap: 8px; flex-wrap: wrap; font-size: 12.5px; color: var(--muted); }
+.tag { font-family: var(--mono); font-size: 11px; text-transform: uppercase; letter-spacing: .05em; padding: 1px 6px; border-radius: 3px; background: var(--accent-soft); color: var(--accent); }
+.tag.core { background: transparent; color: var(--mark); border: 1px solid var(--mark); }
+.lbl { font-family: var(--mono); font-size: 11px; text-transform: uppercase; letter-spacing: .05em; padding: 1px 6px; border-radius: 3px; border: 1px solid var(--line); color: var(--muted); white-space: nowrap; }
+.lbl em { font-style: normal; color: var(--fg); font-weight: 500; }
+.lbl.p-critical { border-color: var(--mark); } .lbl.p-critical em { color: var(--mark); }
+.lbl.p-high em { color: var(--accent); }
+.effort { display: inline-flex; gap: 2px; margin-left: 4px; vertical-align: 1px; }
+.effort i { width: 4px; height: 8px; background: var(--line); border-radius: 1px; }
+.effort i.on { background: var(--fg); }
+.pcount { grid-row: 1 / 3; grid-column: 3; font-family: var(--mono); font-size: 12px; font-variant-numeric: tabular-nums; color: var(--muted); text-align: right; }
+.pcount.full { color: var(--done); }
+.body { padding: 0 16px 16px 16px; display: grid; gap: 14px; min-width: 0; }
+.intro { margin: 0; color: var(--muted); max-width: 65ch; }
+h3 { font-family: var(--mono); font-weight: 500; font-size: 11.5px; text-transform: uppercase; letter-spacing: .08em; color: var(--muted); margin: 0; }
+ul { margin: 0; padding: 0; list-style: none; display: grid; gap: 6px; }
+.task label { display: grid; grid-template-columns: 18px 1fr; gap: 10px; align-items: start; cursor: pointer; }
+.task input { width: 16px; height: 16px; margin: 3px 0 0; accent-color: var(--done); }
+.task.checked .txt { color: var(--muted); text-decoration: line-through; text-decoration-color: var(--line); }
+.txt b { font-weight: 600; }
+.sub { padding-left: 28px; display: grid; gap: 2px; margin-top: 2px; font-size: 14px; color: var(--muted); }
+.res li { padding-left: 14px; position: relative; font-size: 14px; }
+.res li::before { content: "↗"; position: absolute; left: 0; color: var(--accent); font-size: 11px; top: 3px; }
+.res .why { color: var(--muted); }
+
+section.cap { margin-top: 28px; }
+h2 { font-family: var(--display); font-weight: 700; font-size: 24px; margin: 0 0 8px; }
+.tablewrap { overflow-x: auto; margin-top: 16px; border: 1px solid var(--line); border-radius: 6px; background: var(--surface); }
+table { border-collapse: collapse; width: 100%; font-size: 14px; }
+th, td { text-align: left; padding: 8px 12px; border-bottom: 1px solid var(--line); }
+th { font-family: var(--mono); font-weight: 500; font-size: 11.5px; text-transform: uppercase; letter-spacing: .06em; color: var(--muted); }
+td.n, td.w { font-family: var(--mono); font-variant-numeric: tabular-nums; white-space: nowrap; }
+tr:last-child td { border-bottom: 0; }
+td a { color: var(--fg); text-decoration: none; } td a:hover { color: var(--accent); text-decoration: underline; }
+footer { margin-top: 28px; font-size: 13px; color: var(--muted); }
+@media (max-width: 480px) { .ptitle { font-size: 17px; } summary { padding: 12px; } .body { padding: 0 12px 14px; } }
+@media (prefers-reduced-motion: reduce) { .bar > i { transition: none; } }
+</style>
+
+<div class="wrap">
+  <header>
+    <div class="eyebrow">Learning plan · Applied research, industrial inspection</div>
+    <h1>Industrial CV &amp; GenAI Roadmap</h1>
+    <p class="lead">Ten phases from CV fundamentals to synthetic-defect generation and deployed inspection models, in about 5–6 months at 8–10 hrs/week. Your MLOps and observability experience covers much of the lifecycle work, so the real gap is <strong>CV fundamentals → generative image models → industrial inspection</strong>. Weight your time toward Phases 1–5.</p>
+    <p class="note">Amber-edged phases are mandatory in the job description. Ticks are saved in this browser only.</p>
+  </header>
+
+  <div class="gauge" aria-live="polite">
+    <div class="gauge-row">
+      <span class="gauge-label">Progress</span>
+      <span class="gauge-val" id="gv">0 / 0 topics</span>
+    </div>
+    <div class="bar"><i id="gb"></i></div>
+    <div class="tools">
+      <button type="button" id="expand">Expand all</button>
+      <button type="button" id="collapse">Collapse all</button>
+      <button type="button" id="reset">Clear ticks</button>
+    </div>
+  </div>
+
+  <div class="phases" id="phases"></div>
+
+  <section class="cap" id="capstone">
+    <h2>Capstone</h2>
+    <p class="lead" style="margin:0">One interview-ready project that ties every phase together: a synthetic-defect-augmented inspection pipeline.</p>
+    <div class="phases" id="capphase"></div>
+
+    <h2 style="margin-top:28px">At a glance</h2>
+    <div class="tablewrap">
+      <table>
+        <thead><tr><th>Phase</th><th>Topic</th><th>Priority</th><th>Effort</th></tr></thead>
+        <tbody id="tl"></tbody>
+      </table>
+    </div>
+    <p class="note" style="margin-top:10px">Priority reflects the job description: Critical = mandatory and central to the role. Effort is relative study load. Phases 8–9 rate low given an MLOps background.</p>
+  </section>
+
+  <footer>Links point to well-known, stable sources but were not re-checked today. Flag any that break.</footer>
+</div>
+
+<script>
+const L = (t, u, why) => ({ t, u, why });
+const P = [
+ { n: 0, title: "Foundations refresh", weeks: "1–2", note: "Skim if solid",
+   tasks: [
+    "<b>Math:</b> linear algebra (convolutions as linear ops, SVD), probability (Gaussians, KL divergence, likelihood), optimization (SGD, Adam, LR schedules)",
+    "<b>ML basics:</b> bias/variance, regularization, cross-validation, class imbalance handling",
+    "<b>Python stack:</b> NumPy vectorization, pandas, OpenCV (color spaces, filtering, morphology, contours, thresholding), scikit-learn, PIL/albumentations",
+    "<b>PyTorch fluency:</b> Dataset/DataLoader, custom training loops, mixed precision, checkpointing, torch.compile, DDP basics"],
+   res: [
+    L("Mathematics for Machine Learning", "https://mml-book.github.io/", "free book; linear algebra, probability, optimization"),
+    L("3Blue1Brown: Essence of Linear Algebra", "https://www.3blue1brown.com/topics/linear-algebra", "visual intuition"),
+    L("PyTorch Tutorials", "https://pytorch.org/tutorials/", "training loops, AMP, DDP"),
+    L("OpenCV Python Tutorials", "https://docs.opencv.org/4.x/d6/d00/tutorial_py_root.html", "image processing basics"),
+    L("Albumentations docs", "https://albumentations.ai/docs/", "augmentation pipelines")] },
+ { n: 1, title: "Core computer vision with deep learning", weeks: "3–4", core: 1,
+   tasks: [
+    "<b>Classical image processing:</b> edges, histograms, Fourier domain, lighting normalization (matters for inspection images)",
+    "<b>CNNs:</b> conv/pool/receptive fields, BatchNorm, ResNet, EfficientNet, ConvNeXt",
+    ["<b>Tasks and architectures</b>", ["Classification", "Detection: Faster R-CNN, YOLO family, anchor-free detectors", "Segmentation: U-Net, DeepLab, Mask R-CNN", "Similarity learning: Siamese networks, triplet loss, metric learning"]],
+    "<b>Transfer learning:</b> fine-tuning strategies, freezing layers, timm model zoo",
+    "<b>Project:</b> train a classifier and a segmentation model on a small defect dataset (NEU surface defects, or an MVTec AD subset)"],
+   res: [
+    L("Stanford CS231n", "https://cs231n.stanford.edu/", "lecture notes and assignments; the core course"),
+    L("Dive into Deep Learning", "https://d2l.ai/", "CV chapters with runnable PyTorch code"),
+    L("Hugging Face Computer Vision Course", "https://huggingface.co/learn/computer-vision-course", "free, hands-on"),
+    L("Ultralytics docs", "https://docs.ultralytics.com/", "YOLO detection and segmentation in practice"),
+    L("ResNet paper", "https://arxiv.org/abs/1512.03385"),
+    L("U-Net paper", "https://arxiv.org/abs/1505.04597")] },
+ { n: 2, title: "Vision Transformers & Hugging Face", weeks: "2–3", core: 1,
+   tasks: [
+    "<b>Architectures:</b> attention recap, ViT, DeiT, Swin (hierarchical), DETR / Deformable DETR / RT-DETR",
+    "<b>Self-supervised backbones:</b> DINO/DINOv2, MAE",
+    "<b>Hugging Face ecosystem:</b> transformers (vision), timm, datasets, evaluate, accelerate, Hub workflows",
+    "<b>Project:</b> benchmark CNN vs ViT vs DINOv2 features on the same dataset, your first comparative experiment"],
+   res: [
+    L("ViT", "https://arxiv.org/abs/2010.11929", "paper"), L("Swin Transformer", "https://arxiv.org/abs/2103.14030", "paper"),
+    L("DETR", "https://arxiv.org/abs/2005.12872", "paper"), L("MAE", "https://arxiv.org/abs/2111.06377", "paper"),
+    L("DINOv2", "https://arxiv.org/abs/2304.07193", "paper"),
+    L("The Illustrated Transformer", "https://jalammar.github.io/illustrated-transformer/", "attention refresher"),
+    L("Hugging Face Transformers docs", "https://huggingface.co/docs/transformers/", "vision task guides"),
+    L("timm docs", "https://huggingface.co/docs/timm/", "pretrained CNN and ViT backbones"),
+    L("Hugging Face Accelerate", "https://huggingface.co/docs/accelerate/", "multi-GPU training with minimal changes")] },
+ { n: 3, title: "Evaluation & experimental rigor", weeks: "1–2", note: "Run alongside Phases 1–2", core: 1,
+   tasks: [
+    "<b>Metrics:</b> Precision, Recall, F1, ROC-AUC vs PR-AUC (PR-AUC matters with rare defects), mAP/IoU for detection, Dice/IoU for segmentation, image-level vs pixel-level AUROC for anomalies",
+    "<b>Threshold optimization:</b> cost-sensitive thresholds, fixed-recall operating points, escape rate vs false-call rate",
+    "<b>Experiment design:</b> hypothesis formulation, ablation studies, seeds and variance, statistical significance, leakage pitfalls (same part across train/test)",
+    "<b>Reproducibility:</b> config management (Hydra), experiment tracking (MLflow/W&amp;B), data versioning (DVC)"],
+   res: [
+    L("scikit-learn: Model evaluation", "https://scikit-learn.org/stable/modules/model_evaluation.html", "metrics, ROC/PR curves"),
+    L("scikit-learn: Tuning the decision threshold", "https://scikit-learn.org/stable/modules/classification_threshold.html"),
+    L("Google Deep Learning Tuning Playbook", "https://github.com/google-research/tuning_playbook", "systematic experiment design"),
+    L("Hydra", "https://hydra.cc/", "configs"), L("MLflow", "https://mlflow.org/", "tracking"), L("DVC", "https://dvc.org/", "data versioning")] },
+ { n: 4, title: "Anomaly & defect detection", weeks: "3", core: 1, note: "Core to the role",
+   intro: "Defects are rare and often unknown, so most inspection work is one-class or unsupervised learning.",
+   tasks: [
+    "<b>Reconstruction methods:</b> autoencoders, VAEs",
+    "<b>Feature-embedding methods:</b> PaDiM, PatchCore, CFlow/FastFlow",
+    "<b>Student–teacher methods:</b> STFPM, EfficientAD",
+    "<b>Zero/few-shot methods:</b> WinCLIP, AnomalyCLIP",
+    "<b>Tooling:</b> Intel Anomalib library",
+    "<b>Datasets:</b> MVTec AD, MVTec LOCO, VisA, Real-IAD",
+    "<b>Project:</b> run 3–4 Anomalib methods on MVTec AD, compare image- and pixel-level AUROC, then tune thresholds"],
+   res: [
+    L("Anomalib docs", "https://anomalib.readthedocs.io/", "PatchCore, PaDiM, EfficientAD and more"),
+    L("Awesome Industrial Anomaly Detection", "https://github.com/M-3LAB/awesome-industrial-anomaly-detection", "curated papers and datasets"),
+    L("Deep Learning for Anomaly Detection: A Review", "https://arxiv.org/abs/2007.02500", "survey"),
+    L("PatchCore", "https://arxiv.org/abs/2106.08265", "paper"), L("EfficientAD", "https://arxiv.org/abs/2303.14535", "paper"),
+    L("WinCLIP", "https://arxiv.org/abs/2303.14814", "paper"),
+    L("MVTec AD dataset", "https://www.mvtec.com/company/research/datasets/mvtec-ad", "the standard benchmark")] },
+ { n: 5, title: "Generative AI for synthetic image data", weeks: "4–5", core: 1, note: "Biggest new area",
+   tasks: [
+    "<b>VAEs:</b> ELBO, reparameterization, latent space",
+    "<b>GANs:</b> DCGAN, StyleGAN2/3, conditional GANs, CycleGAN/pix2pix (image-to-image), training instabilities",
+    "<b>Diffusion models:</b> DDPM, DDIM, score-based view, classifier-free guidance, Latent Diffusion / Stable Diffusion, SDXL, flow matching",
+    "<b>Controllable generation:</b> ControlNet, inpainting, IP-Adapter, DreamBooth, textual inversion, LoRA fine-tuning of diffusion models",
+    "<b>Synthetic defect generation:</b> defect inpainting onto good parts, mask-conditioned generation, few-shot defect generation (DefectFill, AnomalyDiffusion-style approaches), copy-paste augmentation",
+    "<b>Synthetic data quality:</b> FID, KID, precision/recall for generative models, and above all the downstream train-on-synthetic, test-on-real (TSTR) gain",
+    "<b>Classical augmentation &amp; simulation:</b> albumentations pipelines, CutMix/MixUp, domain randomization, rendering (Blender/BlenderProc), sim-to-real gap",
+    "<b>Tooling:</b> Hugging Face diffusers",
+    "<b>Project:</b> fine-tune SD inpainting with LoRA to paint scratches and dents onto normal images, then measure detector improvement with vs without synthetic data"],
+   res: [
+    L("Understanding Deep Learning (Prince)", "https://udlbook.github.io/udlbook/", "free book; VAEs, GANs, diffusion"),
+    L("Lilian Weng: What are Diffusion Models?", "https://lilianweng.github.io/posts/2021-07-11-diffusion-models/", "math walkthrough"),
+    L("Understanding Diffusion Models: A Unified Perspective", "https://arxiv.org/abs/2208.11970", "tutorial paper"),
+    L("Hugging Face Diffusion Models Course", "https://huggingface.co/learn/diffusion-course", "hands-on"),
+    L("diffusers docs", "https://huggingface.co/docs/diffusers/", "LoRA, ControlNet, inpainting"),
+    L("DDPM", "https://arxiv.org/abs/2006.11239", "paper"), L("Latent Diffusion", "https://arxiv.org/abs/2112.10752", "paper"),
+    L("ControlNet", "https://arxiv.org/abs/2302.05543", "paper"), L("DreamBooth", "https://arxiv.org/abs/2208.12242", "paper"),
+    L("StyleGAN2", "https://arxiv.org/abs/1912.04958", "paper"), L("AnomalyDiffusion", "https://arxiv.org/abs/2312.05767", "paper"),
+    L("BlenderProc", "https://github.com/DLR-RM/BlenderProc", "rendering-based synthetic data")] },
+ { n: 6, title: "Data-efficient learning", weeks: "2–3",
+   tasks: [
+    "<b>Self-supervised &amp; contrastive:</b> SimCLR, MoCo, BYOL, DINO",
+    "<b>Few-shot:</b> prototypical networks, fine-tuning baselines",
+    "<b>Active learning:</b> uncertainty sampling, diversity sampling, annotation loops",
+    "<b>Weak/semi-supervised:</b> pseudo-labeling, FixMatch",
+    "<b>Domain adaptation:</b> DANN, test-time adaptation",
+    "<b>Continual learning:</b> catastrophic forgetting, replay",
+    "<b>PEFT:</b> LoRA/QLoRA on vision and VLM backbones"],
+   res: [
+    L("Lightly", "https://github.com/lightly-ai/lightly", "self-supervised learning library"),
+    L("SimCLR", "https://arxiv.org/abs/2002.05709", "paper"), L("FixMatch", "https://arxiv.org/abs/2001.07685", "paper"),
+    L("Tent (test-time adaptation)", "https://arxiv.org/abs/2006.10726", "paper"), L("LoRA", "https://arxiv.org/abs/2106.09685", "paper"),
+    L("Hugging Face PEFT docs", "https://huggingface.co/docs/peft/", "LoRA/QLoRA for vision and VLMs")] },
+ { n: 7, title: "Vision-language & foundation models", weeks: "2",
+   tasks: [
+    "CLIP, SigLIP, open-vocabulary detection (OWL-ViT, Grounding DINO), SAM/SAM 2",
+    "VLMs (LLaVA, Qwen-VL, Florence-2) for inspection reasoning and auto-labeling",
+    "Zero-shot inspection pipelines: Grounding DINO + SAM for annotation bootstrapping"],
+   res: [
+    L("CLIP", "https://arxiv.org/abs/2103.00020", "paper"), L("Grounding DINO", "https://arxiv.org/abs/2303.05499", "paper"),
+    L("Segment Anything", "https://arxiv.org/abs/2304.02643", "paper"),
+    L("OpenCLIP", "https://github.com/mlfoundations/open_clip", "open CLIP models for zero-shot experiments"),
+    L("Hugging Face zero-shot detection guide", "https://huggingface.co/docs/transformers/tasks/zero_shot_object_detection")] },
+ { n: 8, title: "Monitoring, robustness & uncertainty", weeks: "1–2", note: "Leverage existing strength",
+   tasks: [
+    "<b>CV-specific drift:</b> image statistics drift (brightness, blur, camera changes), embedding drift (MMD, KS on features), prediction and confidence drift",
+    "<b>OOD detection:</b> max softmax, energy scores, Mahalanobis on embeddings",
+    "<b>Uncertainty:</b> MC Dropout, deep ensembles, conformal prediction",
+    "<b>Calibration:</b> ECE, temperature scaling",
+    "<b>Inspection KPIs:</b> defect-rate tracking, alerting on shifts",
+    "<b>Tooling:</b> Evidently, Alibi Detect, NannyML"],
+   res: [
+    L("A Gentle Introduction to Conformal Prediction", "https://arxiv.org/abs/2107.07511", "uncertainty with guarantees"),
+    L("On Calibration of Modern Neural Networks", "https://arxiv.org/abs/1706.04599", "ECE and temperature scaling"),
+    L("Evidently docs", "https://docs.evidentlyai.com/"), L("Alibi Detect docs", "https://docs.seldon.io/projects/alibi-detect/"),
+    L("NannyML docs", "https://nannyml.readthedocs.io/"),
+    L("Made With ML", "https://madewithml.com/", "practical monitoring patterns")] },
+ { n: 9, title: "Deployment & optimization", weeks: "1–2", note: "Skim MLOps parts",
+   tasks: [
+    "Export: ONNX, ONNX Runtime, TensorRT, OpenVINO",
+    "Quantization (PTQ/QAT), pruning, knowledge distillation",
+    "Edge deployment (Jetson), latency/throughput budgets on a production line",
+    "Docker/K8s serving (Triton) and model registries",
+    "Awareness of industrial tools: MVTec HALCON, NeuroCheck"],
+   res: [
+    L("MIT EfficientML course", "https://efficientml.ai/", "quantization, pruning, distillation"),
+    L("ONNX Runtime docs", "https://onnxruntime.ai/docs/"), L("NVIDIA TensorRT", "https://developer.nvidia.com/tensorrt"),
+    L("OpenVINO docs", "https://docs.openvino.ai/", "CPU/edge inference"),
+    L("NVIDIA Triton Inference Server", "https://github.com/triton-inference-server/server", "model serving")] },
+ { n: 10, title: "Industrial context & research output", weeks: "Ongoing",
+   tasks: [
+    "Automated optical inspection (AOI) basics: lighting setups, line-scan vs area cameras, cycle time",
+    "Read 1–2 papers a week from CVPR/ICCV/WACV anomaly and synthetic-data tracks",
+    "Practice writing technical reports and invention disclosures from your projects"],
+   res: [
+    L("MVTec HALCON", "https://www.mvtec.com/products/halcon", "industrial vision software"),
+    L("CVF Open Access", "https://openaccess.thecvf.com/", "free CVPR/ICCV/WACV papers"),
+    L("arXiv cs.CV", "https://arxiv.org/list/cs.CV/recent", "daily new papers"),
+    L("Full Stack Deep Learning", "https://fullstackdeeplearning.com/", "research to product")] }
+];
+const CAP = { n: "C", key: "cap", title: "Synthetic-defect-augmented inspection pipeline", weeks: "", core: 0,
+  tasks: ["PatchCore or EfficientAD baseline on MVTec AD", "Diffusion-generated defects added to the training set",
+    "Supervised detector trained with and without synthetic data, with ablation tables", "Threshold tuning at a target escape rate",
+    "ONNX/TensorRT export", "Drift and OOD monitor on top"], res: [] };
+
+// [effort, priority] per section
+const META = { p0: ["Low", "Medium"], p1: ["High", "Critical"], p2: ["Medium", "Critical"], p3: ["Low", "High"],
+  p4: ["High", "Critical"], p5: ["Very high", "Critical"], p6: ["Medium", "Medium"], p7: ["Medium", "Medium"],
+  p8: ["Low", "Low"], p9: ["Low", "Low"], p10: ["Low", "Medium"], cap: ["High", "High"] };
+const EFF = { "Low": 1, "Medium": 2, "High": 3, "Very high": 4 };
+const bars = e => `<span class="effort" aria-hidden="true">${[1,2,3,4].map(i => `<i class="${i <= EFF[e] ? "on" : ""}"></i>`).join("")}</span>`;
+const KEY = "cvroadmap.v1";
+let state = {}; try { state = JSON.parse(localStorage.getItem(KEY) || "{}") || {}; } catch (e) { state = {}; }
+const save = () => { try { localStorage.setItem(KEY, JSON.stringify(state)); } catch (e) {} };
+const OPEN = KEY + ".open"; let openSet = {}; try { openSet = JSON.parse(localStorage.getItem(OPEN) || "{}") || {}; } catch (e) {}
+const saveOpen = () => { try { localStorage.setItem(OPEN, JSON.stringify(openSet)); } catch (e) {} };
+
+function build(p, host, defaultOpen) {
+  const k = p.key || ("p" + p.n);
+  const d = document.createElement("details");
+  d.className = "phase"; d.id = "phase-" + p.n; if (p.core) d.dataset.core = "1";
+  d.open = k in openSet ? openSet[k] : defaultOpen;
+  d.addEventListener("toggle", () => { openSet[k] = d.open; saveOpen(); });
+  const tags = [];
+  const [eff, pri] = META[k];
+  tags.push(`<span class="lbl p-${pri.toLowerCase()}">Priority <em>${pri}</em></span>`);
+  tags.push(`<span class="lbl">Effort <em>${eff}</em>${bars(eff)}</span>`);
+  if (p.core) tags.push(`<span class="tag core">Mandatory</span>`);
+  if (p.note) tags.push(`<span class="tag">${p.note}</span>`);
+  let items = "";
+  p.tasks.forEach((t, i) => {
+    const id = `${k}-t${i}`; const [main, sub] = Array.isArray(t) ? t : [t, null];
+    items += `<li class="task" data-id="${id}"><label for="${id}"><input type="checkbox" id="${id}"><span class="txt">${main}</span></label>` +
+      (sub ? `<div class="sub">${sub.map(s => `<span>· ${s}</span>`).join("")}</div>` : "") + `</li>`;
+  });
+  const res = p.res.length ? `<div><h3>Resources</h3><ul class="res" style="margin-top:8px">${p.res.map(r =>
+    `<li><a href="${r.u}" target="_blank" rel="noopener">${r.t}</a>${r.why ? ` <span class="why">· ${r.why}</span>` : ""}</li>`).join("")}</ul></div>` : "";
+  d.innerHTML = `<summary><span class="pnum">${typeof p.n === "number" ? String(p.n).padStart(2, "0") : p.n}</span>
+    <span class="ptitle">${p.title}</span><span class="pcount" data-count></span>
+    <span class="pmeta">${tags.join("")}</span></summary>
+    <div class="body">${p.intro ? `<p class="intro">${p.intro}</p>` : ""}
+    <div><h3>Topics</h3><ul style="margin-top:8px">${items}</ul></div>${res}</div>`;
+  d.querySelectorAll(".task").forEach(li => {
+    const cb = li.querySelector("input"); cb.checked = !!state[li.dataset.id];
+    li.classList.toggle("checked", cb.checked);
+    cb.addEventListener("change", () => { state[li.dataset.id] = cb.checked; li.classList.toggle("checked", cb.checked); save(); tally(); });
+  });
+  host.appendChild(d);
+}
+const host = document.getElementById("phases");
+P.forEach((p, i) => build(p, host, i === 0));
+build(CAP, document.getElementById("capphase"), true);
+
+document.getElementById("tl").innerHTML = P.map(p =>
+  `<tr><td class="n">${String(p.n).padStart(2, "0")}</td><td><a href="#phase-${p.n}" data-jump="${p.n}">${p.title}</a></td><td class="w">${META["p" + p.n][1]}</td><td class="w">${META["p" + p.n][0]}</td></tr>`).join("");
+document.getElementById("tl").addEventListener("click", e => {
+  const a = e.target.closest("[data-jump]"); if (!a) return;
+  e.preventDefault(); const d = document.getElementById("phase-" + a.dataset.jump); d.open = true;
+  d.scrollIntoView({ behavior: matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth", block: "start" });
+});
+
+function tally() {
+  let all = 0, done = 0;
+  document.querySelectorAll("details.phase").forEach(d => {
+    const boxes = d.querySelectorAll(".task input"); const c = [...boxes].filter(b => b.checked).length;
+    all += boxes.length; done += c;
+    const el = d.querySelector("[data-count]"); el.textContent = `${c}/${boxes.length}`; el.classList.toggle("full", c === boxes.length && c > 0);
+  });
+  document.getElementById("gv").textContent = `${done} / ${all} topics · ${all ? Math.round(done / all * 100) : 0}%`;
+  document.getElementById("gb").style.width = (all ? done / all * 100 : 0) + "%";
+}
+tally();
+
+document.getElementById("expand").onclick = () => document.querySelectorAll("details.phase").forEach(d => d.open = true);
+document.getElementById("collapse").onclick = () => document.querySelectorAll("details.phase").forEach(d => d.open = false);
+const rb = document.getElementById("reset"); let armed = false, t;
+rb.onclick = () => {
+  if (!armed) { armed = true; rb.textContent = "Click again to clear"; t = setTimeout(() => { armed = false; rb.textContent = "Clear ticks"; }, 3000); return; }
+  clearTimeout(t); armed = false; rb.textContent = "Clear ticks"; state = {}; save();
+  document.querySelectorAll(".task").forEach(li => { li.querySelector("input").checked = false; li.classList.remove("checked"); }); tally();
+};
+</script>
+
+</body></html>
