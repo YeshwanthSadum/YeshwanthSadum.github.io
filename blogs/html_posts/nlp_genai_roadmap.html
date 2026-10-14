@@ -62,6 +62,7 @@ table { border-collapse: collapse; width: 100%; font-size: 14px; }
 th, td { text-align: left; padding: 8px 12px; border-bottom: 1px solid var(--line); }
 th { font-family: var(--mono); font-weight: 500; font-size: 11.5px; text-transform: uppercase; letter-spacing: .06em; color: var(--muted); }
 td.n, td.w { font-family: var(--mono); font-variant-numeric: tabular-nums; white-space: nowrap; }
+td.w.crit { color: var(--mark); }
 tr:last-child td { border-bottom: 0; }
 td a { color: var(--fg); text-decoration: none; } td a:hover { color: var(--accent); text-decoration: underline; }
 footer { margin-top: 28px; font-size: 13px; color: var(--muted); }
@@ -255,4 +256,87 @@ const P = [
     "<b>Tools:</b> function calling, structured outputs, MCP, sandboxes and permissions",
     "<b>Multi-agent:</b> orchestrator-worker, handoffs, shared state, failure modes",
     ["<b>Memory layers</b>", ["Working memory: the context window, context engineering, compaction", "Short-term: session buffers, rolling summaries", "Long-term: episodic (events), semantic (facts), procedural (skills, instructions)", "Memory operations: write, consolidate, retrieve, update, forget/decay"]],
-    "<b>Memory architectures:"]}],
+    "<b>Memory architectures:</b> MemGPT/Letta virtual context paging, Mem0, Zep (temporal KG), Generative Agents reflection",
+    "<b>Frameworks:</b> LangGraph, Claude Agent SDK, OpenAI Agents SDK, CrewAI, AutoGen",
+    "<b>Project:</b> add a long-term memory layer to an agent and measure recall across sessions"],
+   res: [
+    L("Anthropic: Building effective agents", "https://www.anthropic.com/engineering/building-effective-agents", "patterns guide"),
+    L("Lilian Weng: LLM Powered Autonomous Agents", "https://lilianweng.github.io/posts/2023-06-23-agent/", "overview"),
+    L("ReAct", "https://arxiv.org/abs/2210.03629", "paper"),
+    L("CoALA", "https://arxiv.org/abs/2309.02427", "cognitive architectures and memory taxonomy"),
+    L("MemGPT", "https://arxiv.org/abs/2310.08560", "paper"), L("Letta docs", "https://docs.letta.com/", "MemGPT successor"),
+    L("Mem0", "https://github.com/mem0ai/mem0", "memory layer"), L("Zep", "https://arxiv.org/abs/2501.13956", "temporal KG memory paper"),
+    L("Generative Agents", "https://arxiv.org/abs/2304.03442", "memory stream and reflection"),
+    L("Model Context Protocol", "https://modelcontextprotocol.io/", "spec and docs")] },
+ { n: 11, title: "Recursive self-improvement", eff: "Medium", pri: "Medium", note: "Strong debate topic",
+   tasks: [
+    "<b>Concepts:</b> recursive self-improvement, intelligence explosion arguments and counterarguments, bottlenecks (compute, data, evaluation)",
+    "<b>Inference-time self-improvement:</b> Self-Refine, Reflexion, self-consistency, verifier loops",
+    "<b>Training-time self-improvement:</b> STaR, self-rewarding LMs, RLAIF and Constitutional AI, self-play",
+    "<b>Skill and code evolution:</b> Voyager skill libraries, Darwin Gödel Machine, evolutionary code search",
+    "<b>Automated optimization:</b> DSPy prompt optimizers, TextGrad",
+    "<b>Risks:</b> reward hacking, model collapse from self-generated data, oversight and evaluation limits"],
+   res: [
+    L("Self-Refine", "https://arxiv.org/abs/2303.17651", "paper"), L("Reflexion", "https://arxiv.org/abs/2303.11366", "paper"),
+    L("STaR", "https://arxiv.org/abs/2203.14465", "paper"), L("Self-Rewarding Language Models", "https://arxiv.org/abs/2401.10020", "paper"),
+    L("Constitutional AI", "https://arxiv.org/abs/2212.08073", "paper"), L("Voyager", "https://arxiv.org/abs/2305.16291", "paper"),
+    L("Darwin Gödel Machine", "https://arxiv.org/abs/2505.22954", "paper"),
+    L("DSPy", "https://dspy.ai/", "programmatic prompt optimization"), L("TextGrad", "https://arxiv.org/abs/2406.07496", "paper"),
+    L("The Curse of Recursion (model collapse)", "https://arxiv.org/abs/2305.17493", "paper")] },
+ { n: 12, title: "Evaluation, safety & LLMOps", eff: "Low", pri: "Medium", note: "Leverage existing strength",
+   tasks: [
+    "<b>Evaluation:</b> benchmarks and contamination, LLM-as-a-judge biases, pairwise vs pointwise, human eval",
+    "<b>Hallucination:</b> detection, grounding checks, calibration",
+    "<b>Safety:</b> prompt injection, jailbreaks, guardrails, OWASP LLM Top 10",
+    "<b>LLMOps:</b> tracing, prompt versioning, cost tracking, online evals, drift"],
+   res: [
+    L("Judging LLM-as-a-Judge", "https://arxiv.org/abs/2306.05685", "paper"),
+    L("Stanford HELM", "https://crfm.stanford.edu/helm/", "holistic evaluation"),
+    L("OWASP Top 10 for LLM Applications", "https://genai.owasp.org/llm-top-10/", "security risks"),
+    L("DeepEval", "https://deepeval.com/", "eval framework"), L("Langfuse docs", "https://langfuse.com/docs", "tracing and evals")] }
+];
+const CAP = { n: "C", key: "cap", title: "Self-improving agentic research assistant", eff: "Very high", pri: "High",
+  intro: "Pick one domain corpus (papers, docs or code) and build the whole stack around it.",
+  tasks: [
+    "QLoRA-fine-tune a small open model on domain Q&amp;A, then quantize it with AWQ and serve it with vLLM",
+    "Hybrid retrieval: BM25 + HNSW dense index + a knowledge graph for multi-hop questions, with a reranker",
+    "Router that sends easy queries to the small model and hard ones to a frontier model; report the cost-quality curve",
+    "Agent loop with tools (search, code execution) over MCP",
+    "Memory layer: episodic log, semantic fact store and per-user preferences, with consolidation and forgetting",
+    "Self-improvement loop: judge failures, reflect, and update prompts or few-shot examples automatically (DSPy or Reflexion-style)",
+    "Evaluation harness with RAG metrics, routing accuracy and before/after comparisons; full tracing",
+    "Write-up: architecture, ablations, what improved and what did not"], res: [] };
+const EFF = { "Low": 1, "Medium": 2, "High": 3, "Very high": 4 };
+const bars = e => `<span class="effort" aria-hidden="true">${[1,2,3,4].map(i => `<i class="${i <= EFF[e] ? "on" : ""}"></i>`).join("")}</span>`;
+function build(p, host) {
+  const k = p.key || ("p" + p.n);
+  const d = document.createElement("details");
+  d.className = "phase"; d.id = "phase-" + p.n; if (p.pri === "Critical") d.dataset.crit = "1";
+  d.dataset.pri = p.pri; d.open = false;
+  const tags = [
+    `<span class="lbl p-${p.pri.toLowerCase()}">Priority <em>${p.pri}</em></span>`,
+    `<span class="lbl">Effort <em>${p.eff}</em>${bars(p.eff)}</span>`];
+  if (p.note) tags.push(`<span class="tag">${p.note}</span>`);
+  let items = "";
+  p.tasks.forEach((t) => {
+    const [main, sub] = Array.isArray(t) ? t : [t, null];
+    items += `<li class="task"><span class="txt">${main}</span>` + (sub ? `<div class="sub">${sub.map(s => `<span>· ${s}</span>`).join("")}</div>` : "") + `</li>`;
+  });
+  const res = p.res.length ? `<div><h3>Resources</h3><ul class="res" style="margin-top:8px">${p.res.map(r =>
+    `<li><a href="${r.u}" target="_blank" rel="noopener">${r.t}</a>${r.why ? ` <span class="why">· ${r.why}</span>` : ""}</li>`).join("")}</ul></div>` : "";
+  d.innerHTML = `<summary><span class="pnum">${typeof p.n === "number" ? String(p.n).padStart(2, "0") : p.n}</span>
+    <span class="ptitle">${p.title}</span>
+    <span class="pmeta">${tags.join("")}</span></summary>
+    <div class="body">${p.intro ? `<p class="intro">${p.intro}</p>` : ""}
+    <div><h3>Topics</h3><ul style="margin-top:8px">${items}</ul></div>${res}</div>`;
+  host.appendChild(d);
+}
+const host = document.getElementById("phases");
+P.forEach((p, i) => build(p, host, i === 1));
+build(CAP, document.getElementById("capphase"), true);
+document.getElementById("tl").innerHTML = P.map(p =>
+  `<tr><td class="n">${String(p.n).padStart(2, "0")}</td><td><a href="#phase-${p.n}">${p.title}</a></td><td class="w${p.pri === "Critical" ? " crit" : ""}">${p.pri}</td><td class="w">${p.eff}</td></tr>`).join("") +
+  `<tr><td class="n">C</td><td><a href="#phase-C">Capstone</a></td><td class="w">${CAP.pri}</td><td class="w">${CAP.eff}</td></tr>`;
+</script>
+
+</body></html>
