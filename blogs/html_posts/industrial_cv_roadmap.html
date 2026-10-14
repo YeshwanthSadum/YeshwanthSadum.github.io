@@ -263,7 +263,7 @@ function build(p, host) {
   const k = p.key || ("p" + p.n);
   const d = document.createElement("details");
   d.className = "phase"; d.id = "phase-" + p.n; if (p.core) d.dataset.core = "1";
-  d.open = true;
+  d.open = false;
   const tags = [];
   const [eff, pri] = META[k];
   tags.push(`<span class="lbl p-${pri.toLowerCase()}">Priority <em>${pri}</em></span>`);
